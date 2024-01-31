@@ -1,0 +1,63 @@
+.Reproductor {
+    color:black;
+    font-family: PF Regal Display Pro;
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 45px;
+    
+}
+
+
+.inputprop {
+    background-color: transparent;
+    height: 100%;
+    width: 350px;
+    border-radius: 100px;
+    border: 1px solid #FFF;
+    margin-top: 2%;
+    /* margin-left: 8%; */
+    padding: 2% 10%;
+
+}
+
+
+.inputbuscador {
+
+    background-color: transparent;
+    height: 100%;
+    width: 550px;
+    border-radius: 100px;
+    border: 1px solid #0c0b0b;
+    margin-top: 5%;
+    margin-left: 8%;
+    padding: 2% 6%;
+
+
+
+}
+
+
+::placeholder {
+    display: flex;
+    width: 219px;
+    height: 19px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    color: black;
+    font-family: Brandon Grotesque;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 390;
+    line-height: 45px;
+    /* 225% */
+}
+
+.lupita {
+    position: absolute;
+    right: 53%;
+    top: 27%;
+    transform: translate(0, -50%);
+    color: black;
+}
