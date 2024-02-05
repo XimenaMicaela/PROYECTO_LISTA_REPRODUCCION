@@ -64,7 +64,22 @@ header {
           font-size: 5rem;
         }
     
-        .boton-play {
+        .boton-backward {
+            background-color: var(--primary-color);
+            color: var(--background-color);
+            font-size: 2.4rem;
+            padding: 12px 24px;
+            border-radius: var(--border-radius);
+            border: none;
+            transition: var(--transition);
+            cursor: pointer;
+            font-weight: 500;
+      
+            &:hover {
+              background-color: var(--secondary-color);
+            }
+          }
+          .boton-play {
             background-color: var(--primary-color);
             color: var(--background-color);
             font-size: 2.4rem;
@@ -80,21 +95,6 @@ header {
             }
           }
           .boton-pause {
-            background-color: var(--primary-color);
-            color: var(--background-color);
-            font-size: 2.4rem;
-            padding: 12px 24px;
-            border-radius: var(--border-radius);
-            border: none;
-            transition: var(--transition);
-            cursor: pointer;
-            font-weight: 500;
-      
-            &:hover {
-              background-color: var(--secondary-color);
-            }
-          }
-          .boton-stop {
             background-color: var(--primary-color);
             color: var(--background-color);
             font-size: 2.4rem;
@@ -203,7 +203,7 @@ main {
     justify-content: center;
 
     .product-name {
-      font-size: 5rem;
+      font-size: 2.5rem;
     }
 
     .boton-play {
@@ -236,7 +236,39 @@ main {
           background-color: var(--secondary-color);
         }
       }
-      .boton-stop {
+      .boton-backward {
+        background-color: var(--primary-color);
+        color: var(--background-color);
+        font-size: 2.4rem;
+        padding: 12px 24px;
+        border-radius: var(--border-radius);
+        border: none;
+        transition: var(--transition);
+        cursor: pointer;
+        font-weight: 500;
+  
+        &:hover {
+          background-color: var(--secondary-color);
+        }
+      }
+
+      .boton-forward {
+        background-color: var(--primary-color);
+        color: var(--background-color);
+        font-size: 2.4rem;
+        padding: 12px 24px;
+        border-radius: var(--border-radius);
+        border: none;
+        transition: var(--transition);
+        cursor: pointer;
+        font-weight: 500;
+  
+        &:hover {
+          background-color: var(--secondary-color);
+        }
+      }
+
+      .boton-mute {
         background-color: var(--primary-color);
         color: var(--background-color);
         font-size: 2.4rem;
@@ -253,7 +285,7 @@ main {
       }
 
     .product-price {
-      font-size: 5rem;
+      font-size: 2.5rem;
       display: flex;
       align-items: center;
       gap: var(--gap-s);

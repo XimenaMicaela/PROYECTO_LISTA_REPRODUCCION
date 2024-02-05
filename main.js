@@ -1,6 +1,6 @@
 
 const input = document.getElementById('input')
-const boton = document.getElementById('buscar')
+const boton = document.getElementById('boton-buscar')
 const lista = document.getElementById('lista')
 
 const canciones = ['cancion de duki', 'cancion de emilia', 'cancion de tini ', 'otra de duki']
