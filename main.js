@@ -101,19 +101,114 @@ class Reproductor {
   currentPlaylist;
 
 
-/* COMPLETAR CATALOGO CANCIONES */
+  /* COMPLETAR CATALOGO CANCIONES */
   constructor() {
     this.catalogodeCanciones = [
-      new Song(nombre:"...", artista : "...", duracion: "", año : "", genero: "")
+      new Song(nombre: "Break On Through", artista: "...", duracion: "", año: "", genero: ""),
+      new Song(nombre: "B.Y.O.B", artista: "...", duracion: "", año: "", genero: ""),
+      new Song(nombre: "Cementery Gates", artista: "...", duracion: "", año: "", genero: ""),
+      new Song(nombre: "Reptilia", artista: "...", duracion: "", año: "", genero: ""),
+      new Song(nombre: "St.Anger", artista: "...", duracion: "", año: "", genero: ""),
+      new Song(nombre: "cessio", artista: "...", duracion: "", año: "", genero: ""),
+      new Song(nombre: "Duality", artista: "...", duracion: "", año: "", genero: ""),
+      new Song(nombre: "Santa Mónica", artista: "...", duracion: "", año: "", genero: ""),
+      new Song(nombre: "Hoy tengo ganas de ti", artista: "...", duracion: "", año: "", genero: ""),
+      new Song(nombre: "Love Don't let Me Go", artista: "...", duracion: "", año: "", genero: ""),
+      new Song(nombre: "Sexy Bitch", artista: "...", duracion: "", año: "", genero: ""),
+      new Song(nombre: "This One´s for you (feat. Zara larsson)", artista: "...", duracion: "", año: "", genero: ""),
+      new Song(nombre: "When Love Takes Over", artista: "...", duracion: "", año: "", genero: ""),
+      new Song(nombre: "Electrónica", artista: "...", duracion: "", año: "", genero: ""),
+      new Song(nombre: "Film Out", artista: "BTS", duracion: "3:34", año: "2021", genero: "K-POP"),
+      new Song(nombre: "GUETTE", artista: "...", duracion: "", año: "", genero: ""),
+      new Song(nombre: "GIVEN-TAKEN", artista: "ENHYPEN", duracion: "3:03", año: "2020", genero: "K-POP"),
+      new Song(nombre: "Mi ex tenía Razón", artista: "...", duracion: "", año: "", genero: ""),
+      new Song(nombre: "Maps", artista: "...", duracion: "", año: "", genero: ""),
+      new Song(nombre: "Memories", artista: "...", duracion: "", año: "", genero: ""),
+      new Song(nombre: "Sugar", artista: "...", duracion: "", año: "", genero: ""),
+      new Song(nombre: "Pink", artista: "...", duracion: "", año: "", genero: ""),
+      new Song(nombre: "I'm not the only one", artista: "...", duracion: "", año: "", genero: ""),
+      new Song(nombre: "Too Good At Goodbyes", artista: "...", duracion: "", año: "", genero: ""),
+      new Song(nombre: "Unholy", artista: "...", duracion: "", año: "", genero: ""),
+      new Song(nombre: "Writing's on the Wall", artista: "...", duracion: "", año: "", genero: ""),
+      new Song(nombre: "There's NOthing Holdin' me Back", artista: "...", duracion: "", año: "", genero: ""),
+      new Song(nombre: "Sheluvme", artista: "Tai Verdes", duracion: "2:30", año: "2022", genero: "POP"),
+      new Song(nombre: "TOPLINE (Feat, Tiger JK", artista: "SKZ", duracion: "2023", año: "3:23", genero: "K-POP"),
+      new Song(nombre: "You Should be Sad", artista: "Halsey", duracion: "3:25", año: "2020", genero: "POP")
 
-    ]
+
+    ];
+
     this.mostrarCanciones();
+    this.play = this.play.blind(this);
+    /* let PlayButton: HTMLElement = document.getElementsByClassName(elementClass: "play");
+    PlayButton.addEventListener(type: "click",this.play, options:"false"); */
     this.currentSong = this.catalogodeCanciones[0];
   }
 }
 
 
 /*  METODOS */
+
+/* Method that gets all the song  names and place them  in #canciones div   (LIST DIV?)*/
+mostrarCanciones = function(): void {
+  let canciones : HTMLElement = document.getElementsByClassName(elementClass: "list");
+  this.catalogodeCancione.forEach(song => {
+    lista.innerHTML += `<p class= "cancion"> ${song.nombre}</p>`;
+    
+  });
+
+}
+
+
+/* Method to search a song by name with regex*/
+
+buscarCancion = function(songName){
+  return this.catalogodeCanciones.find(song => song.nombre === songName);
+}
+
+/* Method to search a song by author*/
+
+buscarAutor = function(songAuthor){
+  return this.catalogodeCanciones.find(song => song.artista === songAuthor);
+}
+
+
+
+/* Method to play current song if #play button is clicked */
+
+play = function(): void {
+  let audio : HTMLAudioElement = new Audio(this.currentSong.urlSong);
+  audio.play();
+  ;
+
+}
+
+
+/* Method to pause current song if #PAUSE button is clicked */
+
+pause = function(): void {
+  let pauseButton : HTMLElement = document.getElementsByClassName(elementClass: "pause");
+  pauseButton.addEventListener(type: "click", listener: () :void =>{
+    let currentSong = this.getCurrentSong();
+    let audio : HTMLAudioElement = new Audio(currentSong.urlSong);
+    audio.pause();
+  });
+
+}
+
+/* Method to stop current song if #STOP button is clicked */
+
+stop = function(): void {
+  let stopButton : HTMLElement = document.getElementsByClassName(elementClass: "stop");
+  stopButton.addEventListener(type: "click", listener: () :void =>{
+    let currentSong = this.getCurrentSong();
+    audio.pause();
+    audio.currenTime = 0;
+  });
+
+}
+
+
 
 
 
