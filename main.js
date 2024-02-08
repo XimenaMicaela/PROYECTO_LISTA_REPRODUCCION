@@ -104,14 +104,14 @@ class Reproductor {
   /* COMPLETAR CATALOGO CANCIONES */
   constructor() {
     this.catalogodeCanciones = [
-      new Song(nombre: "Break On Through", artista: "...", duracion: "", año: "", genero: ""),
-      new Song(nombre: "B.Y.O.B", artista: "...", duracion: "", año: "", genero: ""),
-      new Song(nombre: "Cementery Gates", artista: "...", duracion: "", año: "", genero: ""),
-      new Song(nombre: "Reptilia", artista: "...", duracion: "", año: "", genero: ""),
-      new Song(nombre: "St.Anger", artista: "...", duracion: "", año: "", genero: ""),
-      new Song(nombre: "cessio", artista: "...", duracion: "", año: "", genero: ""),
-      new Song(nombre: "Duality", artista: "...", duracion: "", año: "", genero: ""),
-      new Song(nombre: "Santa Mónica", artista: "...", duracion: "", año: "", genero: ""),
+      new Song(nombre: "Break On Through", artista: "The Doors", duracion: "00:02:29", año: "1967", genero: "Rock"),
+      new Song(nombre: "B.Y.O.B", artista: "System of a Down", duracion: "00:04:16", año: "2005", genero: "Trash Metal"),
+      new Song(nombre: "Cementery Gates", artista: "Pantera", duracion: "00:07:02", año: "2003", genero: "Metal"),
+      new Song(nombre: "Reptilia", artista: "The Strokes", duracion: "00:03:29", año: "2003", genero: "Alternative"),
+      new Song(nombre: "St.Anger", artista: "Metallica", duracion: "00:07:21", año: "2003", genero: "Nu Metal"),
+      new Song(nombre: "Cessio", artista: "Sal y Mileto", duracion: "00:09:30", año: "2001", genero: "Rock Experimental"),
+      new Song(nombre: "Duality", artista: "Slipknot", duracion: "00:04:12", año: "2004", genero: "Metal"),
+      new Song(nombre: "Santa Monica", artista: "Theory of a Deadman", duracion: "00:04:06", año: "2005", genero: "Rock"),
       new Song(nombre: "Hoy tengo ganas de ti", artista: "...", duracion: "", año: "", genero: ""),
       new Song(nombre: "Love Don't let Me Go", artista: "...", duracion: "", año: "", genero: ""),
       new Song(nombre: "Sexy Bitch", artista: "...", duracion: "", año: "", genero: ""),
