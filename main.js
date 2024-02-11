@@ -98,10 +98,12 @@ playPlaylist() : void {
 class Reproductor {
   catalogodeCanciones;
   currentSong;
+  audio;
+  filtroDeCanciones;
   currentPlaylist;
 
 
-  /* COMPLETAR CATALOGO CANCIONES */
+  /* COMPLETAR CATALOGO CANCIONES  eliminar las etiquetas */
   constructor() {
     this.catalogodeCanciones = [
       new Song(nombre: "Break On Through", artista: "...", duracion: "", año: "", genero: ""),
@@ -143,6 +145,7 @@ class Reproductor {
     /* let PlayButton: HTMLElement = document.getElementsByClassName(elementClass: "play");
     PlayButton.addEventListener(type: "click",this.play, options:"false"); */
     this.currentSong = this.catalogodeCanciones[0];
+    this.audio  = new Audio();
   }
 }
 
@@ -150,8 +153,8 @@ class Reproductor {
 /*  METODOS */
 
 /* Method that gets all the song  names and place them  in #canciones div   (LIST DIV?)*/
-mostrarCanciones = function(): void {
-  let canciones : HTMLElement = document.getElementsByClassName(elementClass: "list");
+mostrarCanciones = function(){
+  let canciones = document.getElementsByClassName( "list");
   this.catalogodeCancione.forEach(song => {
     lista.innerHTML += `<p class= "cancion"> ${song.nombre}</p>`;
     
@@ -176,8 +179,8 @@ buscarAutor = function(songAuthor){
 
 /* Method to play current song if #play button is clicked */
 
-play = function(): void {
-  let audio : HTMLAudioElement = new Audio(this.currentSong.urlSong);
+play = function() {
+  let audio = new Audio(this.currentSong.urlSong);
   audio.play();
   ;
 
@@ -186,11 +189,11 @@ play = function(): void {
 
 /* Method to pause current song if #PAUSE button is clicked */
 
-pause = function(): void {
-  let pauseButton : HTMLElement = document.getElementsByClassName(elementClass: "pause");
-  pauseButton.addEventListener(type: "click", listener: () :void =>{
+pause = function(){
+  let pauseButton = document.getElementsByClassName( "pause");
+  pauseButton.addEventListener( "click",  () =>{
     let currentSong = this.getCurrentSong();
-    let audio : HTMLAudioElement = new Audio(currentSong.urlSong);
+    let audio  = new Audio(currentSong.urlSong);
     audio.pause();
   });
 
@@ -198,17 +201,20 @@ pause = function(): void {
 
 /* Method to stop current song if #STOP button is clicked */
 
-stop = function(): void {
-  let stopButton : HTMLElement = document.getElementsByClassName(elementClass: "stop");
-  stopButton.addEventListener(type: "click", listener: () :void =>{
+stop = function(){
+  let stopButton  = document.getElementsByClassName("stop");
+  stopButton.addEventListener("click", () =>{
     let currentSong = this.getCurrentSong();
+    let audio = new Audio(currentSong.urlSong);
     audio.pause();
     audio.currenTime = 0;
   });
 
 }
 
-
+let Reproductor  = new Reproductor();
+let favoritos = new Playlist("favoritos", [], "shuffle");
+let playlist1 = new Playlist("Playlist1", [], "shuffle");
 
 
 
