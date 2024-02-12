@@ -141,12 +141,27 @@ class Reproductor {
     ];
 
     this.mostrarCanciones();
-    this.play = this.play.blind(this);
-    /* let PlayButton: HTMLElement = document.getElementsByClassName(elementClass: "play");
-    PlayButton.addEventListener(type: "click",this.play, options:"false"); */
+    this.currentPlaylist = 'Busqueda';
     this.currentSong = this.catalogodeCanciones[0];
     this.audio  = new Audio();
-  }
+
+
+    //Listener on click of id buscar  (PROFE)
+    let buscar = document.getElementById('Buscar');
+    buscar.addEventListener('click', () => {
+      this.buscarCancion(document.getElementById("search").value);
+
+    });
+
+    let play = document.getElementById('Play');
+    play.addEventListener('click', () => {
+      this.buscarCancion(document.getElementById("Play").value);
+
+    });
+
+
+    
+    }
 }
 
 
@@ -165,14 +180,24 @@ mostrarCanciones = function(){
 
 /* Method to search a song by name with regex*/
 
-buscarCancion = function(songName){
-  return this.catalogodeCanciones.find(song => song.nombre === songName);
+buscarCancion = function(inputUser){
+  inputUser = inputUser.trim(inputUser);
+  let canciones = document.getElementById ("resBusqueda");
+  canciones.innerHTML = '';
+  let resNombre = this.catalogodeCanciones.filter(song => song.nombre.match(inputUser));
+  let resAlbum = this.catalogodeCanciones.filter(song => song.album.match(inputUser));
+  let resArtista = this.catalogodeCanciones.filter(song => song.artista.match(inputUser));
+  let filtroDeCanciones = [ ...resNombre, ...resAlbum, ...resArtista];
+  filtroDeCanciones = [... new Set (filtroDeCanciones)]
+  this.mostrarBusqueda(filtroDeCanciones);
 }
 
-/* Method to search a song by author*/
+// change cover
 
-buscarAutor = function(songAuthor){
-  return this.catalogodeCanciones.find(song => song.artista === songAuthor);
+cambioPortada = function (){
+  const portada = document.getElementById("portada");
+  portada.src = "/portadas/"+ this.currentSong.cover ;
+
 }
 
 
