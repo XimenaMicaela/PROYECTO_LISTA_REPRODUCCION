@@ -143,7 +143,7 @@ class Reproductor {
     this.mostrarCanciones();
     this.currentPlaylist = 'Busqueda';
     this.currentSong = this.catalogodeCanciones[0];
-    this.audio  = new Audio();
+    this.audio = new Audio();
 
 
     //Listener on click of id buscar  (PROFE)
@@ -160,43 +160,64 @@ class Reproductor {
     });
 
 
-    
-    }
+
+  }
 }
 
 
 /*  METODOS */
 
-/* Method that gets all the song  names and place them  in #canciones div   (LIST DIV?)*/
-mostrarCanciones = function(){
-  let canciones = document.getElementsByClassName( "list");
+/* Method that gets all the song  names and place them  in #canciones div   (HTML-CSS) completar*/
+mostrarCanciones = function () {
+  let canciones = document.getElementsByClassName("resBusqueda");
   this.catalogodeCancione.forEach(song => {
-    lista.innerHTML += `<p class= "cancion"> ${song.nombre}</p>`;
+    canciones.innerHTML += <li id = "res_${song.id}" class = "cancion"> ${song.nombre}
+    <span class = "favoritos fa fa-heart"></span> <span class = "addPlaylist fa fa-plus"></span>
+
+    </li>;
     
+
   });
 
 }
 
 
+mostrarBusqueda = function () {
+  let canciones = document.getElementsByClassName("resBusqueda");
+  filtroDeCanciones.forEach(
+    song => {
+      canciones.innerHTML += <li id = "res_${song.id}" class = "cancion"> ${song.nombre}
+      <span class = "favoritos fa fa-heart"></span> <span class = "addPlaylist fa fa-plus"></span>
+
+      </li>;
+    }
+  );
+}
+
+
+
 /* Method to search a song by name with regex*/
 
-buscarCancion = function(inputUser){
+buscarCancion = function (inputUser) {
   inputUser = inputUser.trim(inputUser);
-  let canciones = document.getElementById ("resBusqueda");
+  inputUser = inputUser.toLowerxase();
+  let canciones = document.getElementById("resBusqueda");
   canciones.innerHTML = '';
   let resNombre = this.catalogodeCanciones.filter(song => song.nombre.match(inputUser));
   let resAlbum = this.catalogodeCanciones.filter(song => song.album.match(inputUser));
   let resArtista = this.catalogodeCanciones.filter(song => song.artista.match(inputUser));
-  let filtroDeCanciones = [ ...resNombre, ...resAlbum, ...resArtista];
-  filtroDeCanciones = [... new Set (filtroDeCanciones)]
+  let filtroDeCanciones = [...resNombre, ...resAlbum, ...resArtista];
+  
+  
+  filtroDeCanciones = [... new Set(filtroDeCanciones)]
   this.mostrarBusqueda(filtroDeCanciones);
 }
 
 // change cover
 
-cambioPortada = function (){
+cambioPortada = function () {
   const portada = document.getElementById("portada");
-  portada.src = "/portadas/"+ this.currentSong.cover ;
+  portada.src = "/portadas/" + this.currentSong.cover;
 
 }
 
@@ -204,7 +225,7 @@ cambioPortada = function (){
 
 /* Method to play current song if #play button is clicked */
 
-play = function() {
+play = function () {
   let audio = new Audio(this.currentSong.urlSong);
   audio.play();
   ;
@@ -214,11 +235,11 @@ play = function() {
 
 /* Method to pause current song if #PAUSE button is clicked */
 
-pause = function(){
-  let pauseButton = document.getElementsByClassName( "pause");
-  pauseButton.addEventListener( "click",  () =>{
+pause = function () {
+  let pauseButton = document.getElementsByClassName("pause");
+  pauseButton.addEventListener("click", () => {
     let currentSong = this.getCurrentSong();
-    let audio  = new Audio(currentSong.urlSong);
+    let audio = new Audio(currentSong.urlSong);
     audio.pause();
   });
 
@@ -226,9 +247,9 @@ pause = function(){
 
 /* Method to stop current song if #STOP button is clicked */
 
-stop = function(){
-  let stopButton  = document.getElementsByClassName("stop");
-  stopButton.addEventListener("click", () =>{
+stop = function () {
+  let stopButton = document.getElementsByClassName("stop");
+  stopButton.addEventListener("click", () => {
     let currentSong = this.getCurrentSong();
     let audio = new Audio(currentSong.urlSong);
     audio.pause();
@@ -237,7 +258,7 @@ stop = function(){
 
 }
 
-let Reproductor  = new Reproductor();
+let Reproductor = new Reproductor();
 let favoritos = new Playlist("favoritos", [], "shuffle");
 let playlist1 = new Playlist("Playlist1", [], "shuffle");
 
