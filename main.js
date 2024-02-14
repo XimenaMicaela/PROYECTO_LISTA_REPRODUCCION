@@ -1,23 +1,4 @@
 
-const input = document.getElementById('input')
-const boton = document.getElementById('boton-buscar')
-const lista = document.getElementById('lista')
-
-const canciones = ['cancion de duki', 'cancion de emilia', 'cancion de tini ', 'otra de duki']
-
-boton.addEventListener('click', function () {
-  const valor = input.value
-
-
-  const cancionesQueCumplen = canciones.filter(c => c.includes(valor))
-
-  lista.innerHTML = cancionesQueCumplen.map(cancionQueCumplio => `<li>${cancionQueCumplio}</li>`)
-  if (cancionesQueCumplen.length === 0) {
-    lista.innerHTML = '<li>No se encontraron canciones</li>'
-  }
-})
-
-
 class Song {
   constructor(nombre, artista, duracion, año, genero) {
     this.nombre = nombre;
@@ -31,23 +12,32 @@ class Song {
 }
 /* PARA REVISAR */
 
-/* getSongName () : string {
-  return `${this.nombre};
+getSongName()
+{
+  return `${this.nombre}`;
 }
 
-getSongArtist () : string {
-  return `${this.artista};
+getSongArtist()
+{
+  return `${this.artista}`;
 }
 
-getSongDuration () : string {
-  return `${this.duration};
+getSongDuration()
+{
+  return `${this.duration}`;
 }
-getSongYear () : string {
-  return `${this.año};
+
+
+getSongYear()
+
+{
+  return `${this.año}`;
 }
-getSongGenre () : string {
-  return `${this.genero};
-} */
+
+getSongGenre()
+{
+  return `${this.genero}`;
+}
 
 
 class Playlist {
@@ -60,40 +50,48 @@ class Playlist {
 }
 
 /* PARA REVISAR */
-/* getPlaylistName() {
+getPlaylistName()
+
+{
   return this.nombre;
 
 }
 
-getPlaylistSongs(){
+getPlaylistSongs()
+{
   return this.listaCanciones;
 }
 
-getPlaylistListeningOrder(){
+getPlaylistListeningOrder()
+{
   return this.ordenEscucha;
 }
 
 
 
-addSongToPLaylist(song): void {
+addSongToPLaylist(song)
+{
   this.listaCanciones.push(song);
 
 }
 
-removeSongFromPlaylist(song): void {
+removeSongFromPlaylist(song)
+{
   this.listaCanciones = this.listaCanciones.filter(s > s !== song);
 }
 
-shufflePlaylist(): void {
+shufflePlaylist()
+{
   this.listaCanciones = this.listaCanciones.sort(() => Math.random() - 0.5);
 }
 
-playPlaylist() : void {
+playPlaylist()
+{
   this.listaCanciones.forEach(song => {
     console.log(`Playing : ${song.nombre}`);
 
   });
-} */
+}
 
 class Reproductor {
   catalogodeCanciones;
@@ -171,11 +169,11 @@ class Reproductor {
 mostrarCanciones = function () {
   let canciones = document.getElementsByClassName("resBusqueda");
   this.catalogodeCancione.forEach(song => {
-    canciones.innerHTML += <li id = "res_${song.id}" class = "cancion"> ${song.nombre}
-    <span class = "favoritos fa fa-heart"></span> <span class = "addPlaylist fa fa-plus"></span>
+    canciones.innerHTML += <li id="res_${song.id}" class="cancion"> ${song.nombre}
+      <span class="favoritos fa fa-heart"></span> <span class="addPlaylist fa fa-plus"></span>
 
     </li>;
-    
+
 
   });
 
@@ -186,8 +184,8 @@ mostrarBusqueda = function () {
   let canciones = document.getElementsByClassName("resBusqueda");
   filtroDeCanciones.forEach(
     song => {
-      canciones.innerHTML += <li id = "res_${song.id}" class = "cancion"> ${song.nombre}
-      <span class = "favoritos fa fa-heart"></span> <span class = "addPlaylist fa fa-plus"></span>
+      canciones.innerHTML += <li id="res_${song.id}" class="cancion"> ${song.nombre}
+        <span class="favoritos fa fa-heart"></span> <span class="addPlaylist fa fa-plus"></span>
 
       </li>;
     }
@@ -207,8 +205,8 @@ buscarCancion = function (inputUser) {
   let resAlbum = this.catalogodeCanciones.filter(song => song.album.match(inputUser));
   let resArtista = this.catalogodeCanciones.filter(song => song.artista.match(inputUser));
   let filtroDeCanciones = [...resNombre, ...resAlbum, ...resArtista];
-  
-  
+
+
   filtroDeCanciones = [... new Set(filtroDeCanciones)]
   this.mostrarBusqueda(filtroDeCanciones);
 }
