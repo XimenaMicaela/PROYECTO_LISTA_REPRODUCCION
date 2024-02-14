@@ -1,11 +1,13 @@
 
 class Song {
-  constructor(nombre, artista, duracion, año, genero) {
+  constructor(nombre, artista, duracion, año, genero, cover, urlSong) {
     this.nombre = nombre;
     this.artista = artista;
     this.duracion = duracion;
     this.año = año;
     this.genero = genero;
+    this.cover = cover;
+    this.urlSong = urlSong
   }
 
 
@@ -221,12 +223,32 @@ cambioPortada = function () {
 
 
 
+
 /* Method to play current song if #play button is clicked */
 
 play = function () {
-  let audio = new Audio(this.currentSong.urlSong);
-  audio.play();
-  ;
+  if (this.currentSong !== undefined) {
+    this.audio.src = "/CANCIONES/" + this.currentSong.urlSong;
+    this.audio.play();
+
+  } else {
+    let id;
+    switch (this.currentPlaylist) {
+      case "Favoritos":
+        id = document.getElementById("pause");
+      case "Busqueda":
+        id = document.getElementById("pause");
+
+      case "Lista":
+        id = document.getElementById("pause");
+        break;
+    }
+    this.currentSong = thid.catalogodeCanciones.find
+      (song => song.id === id);
+    this.audio.src = "/CANCIONES/" + this.currentSong.urlSong;
+    this.audio.play();
+
+  }
 
 }
 
