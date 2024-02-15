@@ -155,128 +155,133 @@ class Reproductor {
 
     let play = document.getElementById('Play');
     play.addEventListener('click', () => {
-      this.buscarCancion(document.getElementById("Play").value);
+      this.play();
 
     });
 
 
 
   }
-}
 
+  /*  METODOS */
 
-/*  METODOS */
-
-/* Method that gets all the song  names and place them  in #canciones div   (HTML-CSS) completar*/
-mostrarCanciones = function () {
-  let canciones = document.getElementsByClassName("resBusqueda");
-  this.catalogodeCancione.forEach(song => {
-    canciones.innerHTML += <li id="res_${song.id}" class="cancion"> ${song.nombre}
-      <span class="favoritos fa fa-heart"></span> <span class="addPlaylist fa fa-plus"></span>
-
-    </li>;
-
-
-  });
-
-}
-
-
-mostrarBusqueda = function () {
-  let canciones = document.getElementsByClassName("resBusqueda");
-  filtroDeCanciones.forEach(
-    song => {
+  /* Method that gets all the song  names and place them  in #canciones div   (HTML-CSS) completar*/
+  mostrarCanciones = function () {
+    let canciones = document.getElementsByClassName("resBusqueda");
+    this.catalogodeCancione.forEach(song => {
       canciones.innerHTML += <li id="res_${song.id}" class="cancion"> ${song.nombre}
         <span class="favoritos fa fa-heart"></span> <span class="addPlaylist fa fa-plus"></span>
 
       </li>;
-    }
-  );
-}
 
 
-
-/* Method to search a song by name with regex*/
-
-buscarCancion = function (inputUser) {
-  inputUser = inputUser.trim(inputUser);
-  inputUser = inputUser.toLowerxase();
-  let canciones = document.getElementById("resBusqueda");
-  canciones.innerHTML = '';
-  let resNombre = this.catalogodeCanciones.filter(song => song.nombre.match(inputUser));
-  let resAlbum = this.catalogodeCanciones.filter(song => song.album.match(inputUser));
-  let resArtista = this.catalogodeCanciones.filter(song => song.artista.match(inputUser));
-  let filtroDeCanciones = [...resNombre, ...resAlbum, ...resArtista];
-
-
-  filtroDeCanciones = [... new Set(filtroDeCanciones)]
-  this.mostrarBusqueda(filtroDeCanciones);
-}
-
-// change cover
-
-cambioPortada = function () {
-  const portada = document.getElementById("portada");
-  portada.src = "/portadas/" + this.currentSong.cover;
-
-}
-
-
-
-
-/* Method to play current song if #play button is clicked */
-
-play = function () {
-  if (this.currentSong !== undefined) {
-    this.audio.src = "/CANCIONES/" + this.currentSong.urlSong;
-    this.audio.play();
-
-  } else {
-    let id;
-    switch (this.currentPlaylist) {
-      case "Favoritos":
-        id = document.getElementById("pause");
-      case "Busqueda":
-        id = document.getElementById("pause");
-
-      case "Lista":
-        id = document.getElementById("pause");
-        break;
-    }
-    this.currentSong = thid.catalogodeCanciones.find
-      (song => song.id === id);
-    this.audio.src = "/CANCIONES/" + this.currentSong.urlSong;
-    this.audio.play();
+    });
 
   }
 
+
+  mostrarBusqueda = function () {
+    let canciones = document.getElementsByClassName("resBusqueda");
+    filtroDeCanciones.forEach(
+      song => {
+        canciones.innerHTML += <li id="res_${song.id}" class="cancion"> ${song.nombre}
+          <span class="favoritos fa fa-heart"></span> <span class="addPlaylist fa fa-plus"></span>
+
+        </li>;
+      }
+    );
+  }
+
+
+
+  /* Method to search a song by name with regex*/
+
+  buscarCancion = function (inputUser) {
+    inputUser = inputUser.trim(inputUser);
+    inputUser = inputUser.toLowerxase();
+    let canciones = document.getElementById("resBusqueda");
+    canciones.innerHTML = '';
+    let resNombre = this.catalogodeCanciones.filter(song => song.nombre.match(inputUser));
+    let resAlbum = this.catalogodeCanciones.filter(song => song.album.match(inputUser));
+    let resArtista = this.catalogodeCanciones.filter(song => song.artista.match(inputUser));
+    let filtroDeCanciones = [...resNombre, ...resAlbum, ...resArtista];
+
+
+    filtroDeCanciones = [... new Set(filtroDeCanciones)]
+    this.mostrarBusqueda(filtroDeCanciones);
+  }
+
+  // change cover
+
+  cambioPortada = function () {
+    const portada = document.getElementById("portada");
+    portada.src = "/IMG/" + this.currentSong.cover;
+
+  }
+
+
+
+
+  /* Method to play current song if #play button is clicked */
+  /* La seccion del case esta incompleta */
+
+  play = function () {
+    if (this.currentSong !== undefined) {
+      this.audio.src = "/CANCIONES/" + this.currentSong.urlSong;
+      this.audio.play();
+
+    } else {
+      let id;
+      switch (this.currentPlaylist) {
+        case "Favoritos":
+          id = document.getElementById("pause");
+        case "Busqueda":
+          id = document.getElementById("pause");
+
+        case "Lista":
+          id = document.getElementById("pause");
+          break;
+      }
+      this.currentSong = thid.catalogodeCanciones.find
+        (song => song.id === id);
+      this.audio.src = "/CANCIONES/" + this.currentSong.urlSong;
+      this.audio.play();
+
+    }
+    this.cambioPortada();
+
+  }
+
+
+  /* Method to pause current song if #PAUSE button is clicked */
+
+  pause = function () {
+    let pauseButton = document.getElementsByClassName("pause");
+    pauseButton.addEventListener("click", () => {
+      let currentSong = this.getCurrentSong();
+      let audio = new Audio(currentSong.urlSong);
+      audio.pause();
+    });
+
+  }
+
+  /* Method to stop current song if #STOP button is clicked */
+
+  stop = function () {
+    let stopButton = document.getElementsByClassName("stop");
+    stopButton.addEventListener("click", () => {
+      let currentSong = this.getCurrentSong();
+      let audio = new Audio(currentSong.urlSong);
+      audio.stop();
+      audio.currenTime = 0;
+    });
+
+  }
+
+
 }
 
 
-/* Method to pause current song if #PAUSE button is clicked */
-
-pause = function () {
-  let pauseButton = document.getElementsByClassName("pause");
-  pauseButton.addEventListener("click", () => {
-    let currentSong = this.getCurrentSong();
-    let audio = new Audio(currentSong.urlSong);
-    audio.pause();
-  });
-
-}
-
-/* Method to stop current song if #STOP button is clicked */
-
-stop = function () {
-  let stopButton = document.getElementsByClassName("stop");
-  stopButton.addEventListener("click", () => {
-    let currentSong = this.getCurrentSong();
-    let audio = new Audio(currentSong.urlSong);
-    audio.pause();
-    audio.currenTime = 0;
-  });
-
-}
 
 let Reproductor = new Reproductor();
 let favoritos = new Playlist("favoritos", [], "shuffle");
