@@ -9,24 +9,50 @@
 </head>
 
 <body>
-    <header>
+    <nav>
+        <a href="">Ecommerce</a>
+        <div class="right-nav">
+          <div class="input-icon">
+            <input
+              type="text"
+              id="search"
+              placeholder="Search a song..." />
+            <i class="bi bi-search" id="searchIcon"></i>
+          </div>
+          <a href="./usuario.html"
+            ><i class="bi bi-person-circle"></i
+          ></a>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="product-container" id="product-container"></div>
+
+      <div class="list-container">
+
+
+
+ <!--    <header id="header">
         <nav>
             <a href="">Reproductor de música</a>
-            <div class="left-nav">
+            <div class="right-nav">
                 <div class="search">
-                    <input type="text" id="input" placeholder="Search a song..." />
+                    <input type="text" id="input-buscar" placeholder="Search a song..." />
                     <button class="boton-buscar">
                         <i class="bi bi-search"></i>
-                      </button>
+                    </button>
                 </div>
+                <a href="./usuario.html"
+                ><i class="bi bi-person-circle"></i>
+            </a>
+
             </div>
             <script src="https://kit.fontawesome.com/00e8fddde4.js" crossorigin="anonymous"></script>
         </nav>
     </header>
     <main>
-
-
-        <div class="list-container">
+        
+        <div class="list-container"> -->
             <!-- 
 
 All products
@@ -35,24 +61,24 @@ All products
 
             <div class="list">
                 <div class="product-list">
-                    <h3>Resultados del buscador <span>(30)</span></h3>
-                    <div class="products">
-                        <div class="product">
+                    <h3>Canciones<span>(30)</span></h3>
+                    <div class="products" id="products">
+                       <!--  <div class="product">
                             <div class="right-product">
                                 <img src="./IMG/THE DOORS.png" alt="shoe" />
                                 <h4>Break On Through</h4>
                             </div>
                             <span class="price">
                                 <button class="boton-play">
-                                  <i class="fa-solid fa-play"></i>
+                                    <i class="fa-solid fa-play"></i>
                                 </button>
                                 <button class="boton-heart">
-                                <i class="fa-solid fa-heart"></i>
+                                    <i class="fa-solid fa-heart"></i>
                                 </button>
                                 <button class="boton-plus">
-                                <i class="fa-solid fa-plus"></i>
+                                    <i class="fa-solid fa-plus"></i>
                                 </button>
-                              </span>
+                            </span>
 
                         </div>
                         <div class="product">
@@ -62,15 +88,15 @@ All products
                             </div>
                             <span class="price">
                                 <button class="boton-play">
-                                  <i class="fa-solid fa-play"></i>
+                                    <i class="fa-solid fa-play"></i>
                                 </button>
                                 <button class="boton-heart">
-                                <i class="fa-solid fa-heart"></i>
+                                    <i class="fa-solid fa-heart"></i>
                                 </button>
                                 <button class="boton-plus">
-                                <i class="fa-solid fa-plus"></i>
+                                    <i class="fa-solid fa-plus"></i>
                                 </button>
-                              </span>
+                            </span>
                         </div>
                         <div class="product">
                             <div class="right-product">
@@ -79,15 +105,15 @@ All products
                             </div>
                             <span class="price">
                                 <button class="boton-play">
-                                  <i class="fa-solid fa-play"></i>
+                                    <i class="fa-solid fa-play"></i>
                                 </button>
                                 <button class="boton-heart">
-                                <i class="fa-solid fa-heart"></i>
+                                    <i class="fa-solid fa-heart"></i>
                                 </button>
                                 <button class="boton-plus">
-                                <i class="fa-solid fa-plus"></i>
+                                    <i class="fa-solid fa-plus"></i>
                                 </button>
-                              </span>
+                            </span>
 
                         </div>
                         <div class="product">
@@ -97,15 +123,15 @@ All products
                             </div>
                             <span class="price">
                                 <button class="boton-play">
-                                  <i class="fa-solid fa-play"></i>
+                                    <i class="fa-solid fa-play"></i>
                                 </button>
                                 <button class="boton-heart">
-                                <i class="fa-solid fa-heart"></i>
+                                    <i class="fa-solid fa-heart"></i>
                                 </button>
                                 <button class="boton-plus">
-                                <i class="fa-solid fa-plus"></i>
+                                    <i class="fa-solid fa-plus"></i>
                                 </button>
-                              </span>
+                            </span>
 
                         </div>
                         <div class="product">
@@ -115,15 +141,15 @@ All products
                             </div>
                             <span class="price">
                                 <button class="boton-play">
-                                  <i class="fa-solid fa-play"></i>
+                                    <i class="fa-solid fa-play"></i>
                                 </button>
                                 <button class="boton-heart">
-                                <i class="fa-solid fa-heart"></i>
+                                    <i class="fa-solid fa-heart"></i>
                                 </button>
                                 <button class="boton-plus">
-                                <i class="fa-solid fa-plus"></i>
+                                    <i class="fa-solid fa-plus"></i>
                                 </button>
-                              </span>
+                            </span>
                         </div>
                         <div class="product">
                             <div class="right-product">
@@ -132,15 +158,15 @@ All products
                             </div>
                             <span class="price">
                                 <button class="boton-play">
-                                  <i class="fa-solid fa-play"></i>
+                                    <i class="fa-solid fa-play"></i>
                                 </button>
                                 <button class="boton-heart">
-                                <i class="fa-solid fa-heart"></i>
+                                    <i class="fa-solid fa-heart"></i>
                                 </button>
                                 <button class="boton-plus">
-                                <i class="fa-solid fa-plus"></i>
+                                    <i class="fa-solid fa-plus"></i>
                                 </button>
-                              </span>
+                            </span>
 
 
                         </div>
@@ -151,15 +177,15 @@ All products
                             </div>
                             <span class="price">
                                 <button class="boton-play">
-                                  <i class="fa-solid fa-play"></i>
+                                    <i class="fa-solid fa-play"></i>
                                 </button>
                                 <button class="boton-heart">
-                                <i class="fa-solid fa-heart"></i>
+                                    <i class="fa-solid fa-heart"></i>
                                 </button>
                                 <button class="boton-plus">
-                                <i class="fa-solid fa-plus"></i>
+                                    <i class="fa-solid fa-plus"></i>
                                 </button>
-                              </span>
+                            </span>
                         </div>
                         <div class="product">
                             <div class="right-product">
@@ -168,15 +194,15 @@ All products
                             </div>
                             <span class="price">
                                 <button class="boton-play">
-                                  <i class="fa-solid fa-play"></i>
+                                    <i class="fa-solid fa-play"></i>
                                 </button>
                                 <button class="boton-heart">
-                                <i class="fa-solid fa-heart"></i>
+                                    <i class="fa-solid fa-heart"></i>
                                 </button>
                                 <button class="boton-plus">
-                                <i class="fa-solid fa-plus"></i>
+                                    <i class="fa-solid fa-plus"></i>
                                 </button>
-                              </span>
+                            </span>
                         </div>
                         <div class="product">
                             <div class="right-product">
@@ -185,15 +211,15 @@ All products
                             </div>
                             <span class="price">
                                 <button class="boton-play">
-                                  <i class="fa-solid fa-play"></i>
+                                    <i class="fa-solid fa-play"></i>
                                 </button>
                                 <button class="boton-heart">
-                                <i class="fa-solid fa-heart"></i>
+                                    <i class="fa-solid fa-heart"></i>
                                 </button>
                                 <button class="boton-plus">
-                                <i class="fa-solid fa-plus"></i>
+                                    <i class="fa-solid fa-plus"></i>
                                 </button>
-                              </span>
+                            </span>
 
                         </div>
                         <div class="product">
@@ -203,15 +229,15 @@ All products
                             </div>
                             <span class="price">
                                 <button class="boton-play">
-                                  <i class="fa-solid fa-play"></i>
+                                    <i class="fa-solid fa-play"></i>
                                 </button>
                                 <button class="boton-heart">
-                                <i class="fa-solid fa-heart"></i>
+                                    <i class="fa-solid fa-heart"></i>
                                 </button>
                                 <button class="boton-plus">
-                                <i class="fa-solid fa-plus"></i>
+                                    <i class="fa-solid fa-plus"></i>
                                 </button>
-                              </span>
+                            </span>
 
                         </div>
                         <div class="product">
@@ -221,15 +247,15 @@ All products
                             </div>
                             <span class="price">
                                 <button class="boton-play">
-                                  <i class="fa-solid fa-play"></i>
+                                    <i class="fa-solid fa-play"></i>
                                 </button>
                                 <button class="boton-heart">
-                                <i class="fa-solid fa-heart"></i>
+                                    <i class="fa-solid fa-heart"></i>
                                 </button>
                                 <button class="boton-plus">
-                                <i class="fa-solid fa-plus"></i>
+                                    <i class="fa-solid fa-plus"></i>
                                 </button>
-                              </span>
+                            </span>
                         </div>
                         <div class="product">
                             <div class="right-product">
@@ -238,15 +264,15 @@ All products
                             </div>
                             <span class="price">
                                 <button class="boton-play">
-                                  <i class="fa-solid fa-play"></i>
+                                    <i class="fa-solid fa-play"></i>
                                 </button>
                                 <button class="boton-heart">
-                                <i class="fa-solid fa-heart"></i>
+                                    <i class="fa-solid fa-heart"></i>
                                 </button>
                                 <button class="boton-plus">
-                                <i class="fa-solid fa-plus"></i>
+                                    <i class="fa-solid fa-plus"></i>
                                 </button>
-                              </span>
+                            </span>
                         </div>
                         <div class="product">
                             <div class="right-product">
@@ -255,15 +281,15 @@ All products
                             </div>
                             <span class="price">
                                 <button class="boton-play">
-                                  <i class="fa-solid fa-play"></i>
+                                    <i class="fa-solid fa-play"></i>
                                 </button>
                                 <button class="boton-heart">
-                                <i class="fa-solid fa-heart"></i>
+                                    <i class="fa-solid fa-heart"></i>
                                 </button>
                                 <button class="boton-plus">
-                                <i class="fa-solid fa-plus"></i>
+                                    <i class="fa-solid fa-plus"></i>
                                 </button>
-                              </span>
+                            </span>
                         </div>
                         <div class="product">
                             <div class="right-product">
@@ -272,15 +298,15 @@ All products
                             </div>
                             <span class="price">
                                 <button class="boton-play">
-                                  <i class="fa-solid fa-play"></i>
+                                    <i class="fa-solid fa-play"></i>
                                 </button>
                                 <button class="boton-heart">
-                                <i class="fa-solid fa-heart"></i>
+                                    <i class="fa-solid fa-heart"></i>
                                 </button>
                                 <button class="boton-plus">
-                                <i class="fa-solid fa-plus"></i>
+                                    <i class="fa-solid fa-plus"></i>
                                 </button>
-                              </span>
+                            </span>
                         </div>
                         <div class="product">
                             <div class="right-product">
@@ -289,15 +315,15 @@ All products
                             </div>
                             <span class="price">
                                 <button class="boton-play">
-                                  <i class="fa-solid fa-play"></i>
+                                    <i class="fa-solid fa-play"></i>
                                 </button>
                                 <button class="boton-heart">
-                                <i class="fa-solid fa-heart"></i>
+                                    <i class="fa-solid fa-heart"></i>
                                 </button>
                                 <button class="boton-plus">
-                                <i class="fa-solid fa-plus"></i>
+                                    <i class="fa-solid fa-plus"></i>
                                 </button>
-                              </span>
+                            </span>
                         </div>
                         <div class="product">
                             <div class="right-product">
@@ -306,15 +332,15 @@ All products
                             </div>
                             <span class="price">
                                 <button class="boton-play">
-                                  <i class="fa-solid fa-play"></i>
+                                    <i class="fa-solid fa-play"></i>
                                 </button>
                                 <button class="boton-heart">
-                                <i class="fa-solid fa-heart"></i>
+                                    <i class="fa-solid fa-heart"></i>
                                 </button>
                                 <button class="boton-plus">
-                                <i class="fa-solid fa-plus"></i>
+                                    <i class="fa-solid fa-plus"></i>
                                 </button>
-                              </span>
+                            </span>
                         </div>
                         <div class="product">
                             <div class="right-product">
@@ -323,15 +349,15 @@ All products
                             </div>
                             <span class="price">
                                 <button class="boton-play">
-                                  <i class="fa-solid fa-play"></i>
+                                    <i class="fa-solid fa-play"></i>
                                 </button>
                                 <button class="boton-heart">
-                                <i class="fa-solid fa-heart"></i>
+                                    <i class="fa-solid fa-heart"></i>
                                 </button>
                                 <button class="boton-plus">
-                                <i class="fa-solid fa-plus"></i>
+                                    <i class="fa-solid fa-plus"></i>
                                 </button>
-                              </span>
+                            </span>
                         </div>
                         <div class="product">
                             <div class="right-product">
@@ -340,15 +366,15 @@ All products
                             </div>
                             <span class="price">
                                 <button class="boton-play">
-                                  <i class="fa-solid fa-play"></i>
+                                    <i class="fa-solid fa-play"></i>
                                 </button>
                                 <button class="boton-heart">
-                                <i class="fa-solid fa-heart"></i>
+                                    <i class="fa-solid fa-heart"></i>
                                 </button>
                                 <button class="boton-plus">
-                                <i class="fa-solid fa-plus"></i>
+                                    <i class="fa-solid fa-plus"></i>
                                 </button>
-                              </span>
+                            </span>
                         </div>
                         <div class="product">
                             <div class="right-product">
@@ -357,15 +383,15 @@ All products
                             </div>
                             <span class="price">
                                 <button class="boton-play">
-                                  <i class="fa-solid fa-play"></i>
+                                    <i class="fa-solid fa-play"></i>
                                 </button>
                                 <button class="boton-heart">
-                                <i class="fa-solid fa-heart"></i>
+                                    <i class="fa-solid fa-heart"></i>
                                 </button>
                                 <button class="boton-plus">
-                                <i class="fa-solid fa-plus"></i>
+                                    <i class="fa-solid fa-plus"></i>
                                 </button>
-                              </span>
+                            </span>
                         </div>
                         <div class="product">
                             <div class="right-product">
@@ -374,15 +400,15 @@ All products
                             </div>
                             <span class="price">
                                 <button class="boton-play">
-                                  <i class="fa-solid fa-play"></i>
+                                    <i class="fa-solid fa-play"></i>
                                 </button>
                                 <button class="boton-heart">
-                                <i class="fa-solid fa-heart"></i>
+                                    <i class="fa-solid fa-heart"></i>
                                 </button>
                                 <button class="boton-plus">
-                                <i class="fa-solid fa-plus"></i>
+                                    <i class="fa-solid fa-plus"></i>
                                 </button>
-                              </span>
+                            </span>
                         </div>
                         <div class="product">
                             <div class="right-product">
@@ -391,15 +417,15 @@ All products
                             </div>
                             <span class="price">
                                 <button class="boton-play">
-                                  <i class="fa-solid fa-play"></i>
+                                    <i class="fa-solid fa-play"></i>
                                 </button>
                                 <button class="boton-heart">
-                                <i class="fa-solid fa-heart"></i>
+                                    <i class="fa-solid fa-heart"></i>
                                 </button>
                                 <button class="boton-plus">
-                                <i class="fa-solid fa-plus"></i>
+                                    <i class="fa-solid fa-plus"></i>
                                 </button>
-                              </span>
+                            </span>
                         </div>
                         <div class="product">
                             <div class="right-product">
@@ -408,15 +434,15 @@ All products
                             </div>
                             <span class="price">
                                 <button class="boton-play">
-                                  <i class="fa-solid fa-play"></i>
+                                    <i class="fa-solid fa-play"></i>
                                 </button>
                                 <button class="boton-heart">
-                                <i class="fa-solid fa-heart"></i>
+                                    <i class="fa-solid fa-heart"></i>
                                 </button>
                                 <button class="boton-plus">
-                                <i class="fa-solid fa-plus"></i>
+                                    <i class="fa-solid fa-plus"></i>
                                 </button>
-                              </span>
+                            </span>
                         </div>
                         <div class="product">
                             <div class="right-product">
@@ -425,15 +451,15 @@ All products
                             </div>
                             <span class="price">
                                 <button class="boton-play">
-                                  <i class="fa-solid fa-play"></i>
+                                    <i class="fa-solid fa-play"></i>
                                 </button>
                                 <button class="boton-heart">
-                                <i class="fa-solid fa-heart"></i>
+                                    <i class="fa-solid fa-heart"></i>
                                 </button>
                                 <button class="boton-plus">
-                                <i class="fa-solid fa-plus"></i>
+                                    <i class="fa-solid fa-plus"></i>
                                 </button>
-                              </span>
+                            </span>
                         </div>
                         <div class="product">
                             <div class="right-product">
@@ -442,15 +468,15 @@ All products
                             </div>
                             <span class="price">
                                 <button class="boton-play">
-                                  <i class="fa-solid fa-play"></i>
+                                    <i class="fa-solid fa-play"></i>
                                 </button>
                                 <button class="boton-heart">
-                                <i class="fa-solid fa-heart"></i>
+                                    <i class="fa-solid fa-heart"></i>
                                 </button>
                                 <button class="boton-plus">
-                                <i class="fa-solid fa-plus"></i>
+                                    <i class="fa-solid fa-plus"></i>
                                 </button>
-                              </span>
+                            </span>
                         </div>
                         <div class="product">
                             <div class="right-product">
@@ -459,15 +485,15 @@ All products
                             </div>
                             <span class="price">
                                 <button class="boton-play">
-                                  <i class="fa-solid fa-play"></i>
+                                    <i class="fa-solid fa-play"></i>
                                 </button>
                                 <button class="boton-heart">
-                                <i class="fa-solid fa-heart"></i>
+                                    <i class="fa-solid fa-heart"></i>
                                 </button>
                                 <button class="boton-plus">
-                                <i class="fa-solid fa-plus"></i>
+                                    <i class="fa-solid fa-plus"></i>
                                 </button>
-                              </span>
+                            </span>
                         </div>
                         <div class="product">
                             <div class="right-product">
@@ -476,15 +502,15 @@ All products
                             </div>
                             <span class="price">
                                 <button class="boton-play">
-                                  <i class="fa-solid fa-play"></i>
+                                    <i class="fa-solid fa-play"></i>
                                 </button>
                                 <button class="boton-heart">
-                                <i class="fa-solid fa-heart"></i>
+                                    <i class="fa-solid fa-heart"></i>
                                 </button>
                                 <button class="boton-plus">
-                                <i class="fa-solid fa-plus"></i>
+                                    <i class="fa-solid fa-plus"></i>
                                 </button>
-                              </span>
+                            </span>
                         </div>
                         <div class="product">
                             <div class="right-product">
@@ -493,15 +519,15 @@ All products
                             </div>
                             <span class="price">
                                 <button class="boton-play">
-                                  <i class="fa-solid fa-play"></i>
+                                    <i class="fa-solid fa-play"></i>
                                 </button>
                                 <button class="boton-heart">
-                                <i class="fa-solid fa-heart"></i>
+                                    <i class="fa-solid fa-heart"></i>
                                 </button>
                                 <button class="boton-plus">
-                                <i class="fa-solid fa-plus"></i>
+                                    <i class="fa-solid fa-plus"></i>
                                 </button>
-                              </span>
+                            </span>
                         </div>
                         <div class="product">
                             <div class="right-product">
@@ -510,15 +536,15 @@ All products
                             </div>
                             <span class="price">
                                 <button class="boton-play">
-                                  <i class="fa-solid fa-play"></i>
+                                    <i class="fa-solid fa-play"></i>
                                 </button>
                                 <button class="boton-heart">
-                                <i class="fa-solid fa-heart"></i>
+                                    <i class="fa-solid fa-heart"></i>
                                 </button>
                                 <button class="boton-plus">
-                                <i class="fa-solid fa-plus"></i>
+                                    <i class="fa-solid fa-plus"></i>
                                 </button>
-                              </span>
+                            </span>
                         </div>
                         <div class="product">
                             <div class="right-product">
@@ -527,16 +553,16 @@ All products
                             </div>
                             <span class="price">
                                 <button class="boton-play">
-                                  <i class="fa-solid fa-play"></i>
+                                    <i class="fa-solid fa-play"></i>
                                 </button>
                                 <button class="boton-heart">
-                                <i class="fa-solid fa-heart"></i>
+                                    <i class="fa-solid fa-heart"></i>
                                 </button>
                                 <button class="boton-plus">
-                                <i class="fa-solid fa-plus"></i>
+                                    <i class="fa-solid fa-plus"></i>
                                 </button>
-                              </span>
-                        </div>
+                            </span>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -549,10 +575,10 @@ All products
 
             <div class="list">
                 <div class="product-list">
-                    <h3>My playlist <span>(3)</span></h3>
-                    <div class="products">
+                    <h3>Favorites </h3>
+                    <div class="products" id="favorites" >
                         <div class="product">
-                            <div class="right-product">
+                            <!-- <div class="right-product">
                                 <img src="./IMG/HDTV.png" alt="HDTV" />
                                 <h4>Sheluvme </h4>
                             </div>
@@ -595,7 +621,7 @@ All products
                             <button class="boton-plus">
                                 <i class="fa-solid fa-plus"></i>
                             </button>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -608,9 +634,9 @@ All products
 
             <div class="list">
                 <div class="product-list">
-                    <h3>Favoritos </h3>
-                    <div class="products">
-                        <div class="product">
+                    <h3>Playlist </h3>
+                    <div class="products" id="cart">
+                        <!-- <div class="product">
                             <div class="right-product">
                                 <img src="./IMG/KAROLG.jpg" alt="shoe" />
                                 <h4>Mi Ex tenía razón </h4>
@@ -632,23 +658,23 @@ All products
                             </div>
                             <span class="price">
                                 <button class="boton-play">
-                                  <i class="fa-solid fa-play"></i>
+                                    <i class="fa-solid fa-play"></i>
                                 </button>
                                 <button class="boton-heart">
-                                <i class="fa-solid fa-heart"></i>
+                                    <i class="fa-solid fa-heart"></i>
                                 </button>
                                 <button class="boton-plus">
-                                <i class="fa-solid fa-plus"></i>
+                                    <i class="fa-solid fa-plus"></i>
                                 </button>
-                              </span>
-                        </div>
+                            </span>
+                        </div> -->
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="product-container">
-            <img class="product-img" src="./IMG/BALADA.jpg" alt="shoe" />
+           <!--  <img class="product-img" src="./IMG/BALADA.jpg" alt="shoe" /> -->
             <!-- <h2 class="product-name">
                 Break On Through
             </h2> -->
@@ -680,7 +706,7 @@ All products
                 <button class="boton-mute">
                     <i class="fa-solid fa-volume-xmark"></i>
                 </button>
-              </span>
+            </span>
         </div>
     </main>
     <script src="./main.js"></script>
