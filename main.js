@@ -339,11 +339,11 @@ let playlist1 = new Playlist("Playlist1", [], "shuffle"); */
 /* CONTENIDO NUEVO */
 
 
-/* Product */
+/* SONGS*/
 
 class Product {
   static idCounter = 0;
-  constructor({ name, price = 200, discountedPrice = 100,artista, duracion, anio, genero,  urlSong,  image, isFavorite = false, inCart = false }) {
+  constructor({ name, price = 200, discountedPrice = 100, artista, duracion, anio, genero, urlSong, image, isFavorite = false, inCart = false }) {
     this.id = Product.idCounter++;
     this.name = name;
     this.price = price;
@@ -356,10 +356,11 @@ class Product {
     this.image = image;
     this.isFavorite = isFavorite;
     this.inCart = inCart;
+
   }
 }
 
-/* ProductList */
+/* PLAYLIST */
 
 class ProductList {
   constructor({ name, products = [], container }) {
@@ -369,12 +370,15 @@ class ProductList {
   }
 
   renderList() {
-    if (this.products.length === 0) this.container.innerHTML = `<p class="productsError">No se encontraron productos</p>`
+    if (this.products.length === 0) this.container.innerHTML = `<p class="productsError">Playlist vacía</p>`
     else this.container.innerHTML = this.products.map((p) => `
      <div class="product" onClick="changeCurrentProduct(${p.id})">
                 <div class="left-product">
                   <img src=${p.image} alt="shoe" />
                   <h4>${p.name}</h4>
+                  <button id= "play" class="boton-play">
+          <i class="bi bi-play"></i>
+      </button>
                 </div>
            
               </div>
@@ -383,12 +387,15 @@ class ProductList {
 
   searchProduct(query) {
     const results = this.products.filter(p => p.name.toLowerCase().includes(query.toLowerCase()))
-    if (results.length === 0) this.container.innerHTML = `<p class="productsError">No se encontraron productos</p>`
+    if (results.length === 0) this.container.innerHTML = `<p class="productsError">Playlist vacia</p>`
     else productsContainerList.innerHTML = results.map((p) => `
      <div class="product" onClick="changeCurrentProduct(${p.id})">
                 <div class="left-product">
                   <img src=${p.image} alt="shoe" />
                   <h4>${p.name}</h4>
+                  <button id= "play" class="boton-play">
+          <i class="bi bi-play"></i>
+      </button>
                 </div>
               </div>
     `)
@@ -396,7 +403,7 @@ class ProductList {
 
   addProduct(product) {
     if (this.name === 'Favorites') product.isFavorite = true
-    if (this.name === 'Playlist') product.inCart = true
+    if (this.name === 'cart') product.inCart = true
     this.products.push(product)
     this.renderList()
   }
@@ -411,39 +418,39 @@ class ProductList {
   }
 }
 
-/* All products */
+/* REPRODUCTOR */
 
 const allProducts = [
-  new Product({name: "Break On Through", price: 150,discountedPrice: 120,image: "./IMG/THEDOORS.png", urlSong: "./CANCIONES/01 Break On Through (To The Other Side).mp3"}),
-  new Product({name: "B.Y.O.B", price: 150,discountedPrice: 120,artista: "System of a Down", duracion: "00:04:16", anio: "2005", genero: "Trash Metal",image : "./IMG/SYSTEMOFADOWN.png", urlSong: ".CANCIONES//02 B.Y.O.B..mp3" }),
-  new Product({name: "Cementery Gates", artista: "Pantera", duracion: "00:07:02", anio: "2003", genero: "Metal",image :"./IMG/PANTERA.png", urlSong: "./CANCIONES/02 Cemetery Gates - Remastered Version.mp3"}),
-  new Product({name: "Reptilia", artista: "The Strokes", duracion: "00:03:29", anio: "2003", genero: "Alternative",image :"./IMG/THESTROKES.png", urlSong: "./CANCIONES/02 Reptilia.mp3"}),
-  new Product({name: "St.Anger", artista: "Metallica", duracion: "00:07:21", anio: "2003", genero: "Nu Metal",image :"./IMG/METALLICA.png",urlSong: "./CANCIONES/02 St. Anger.mp3"}),
-  new Product({name: "Cessio", artista: "Sal y Mileto", duracion: "00:09:30", anio: "2001", genero: "Rock Experimental", image :"./IMG/SALYMILETO.png",urlSong: "./CANCIONES/2-04 cessio.mp3" }),
-  new Product({name: "Duality", artista: "Slipknot", duracion: "00:04:12", anio: "2004", genero: "Metal",image :"./IMG/SLIPKNOT.png",urlSong: "./CANCIONES/04 Duality.mp3"}),
-  new Product({name: "Santa Monica", artista: "Theory of a Deadman", duracion: "00:04:06", anio: "2005", genero: "Rock",image :"./IMG/THEORYOFADEADMAN.png",urlSong: "./CANCIONES/05 Santa Monica.mp3" }),
-  new Product({name: "Hoy tengo ganas de ti", artista: "Alejandro Fernandez", duracion: "00:04:51", anio: "2013", genero: "Balada Pop",image :"./IMG/BALADA.jpg" ,urlSong: "./CANCIONES/Alejandro Fernández - Hoy Tengo Ganas De Ti.mp3"}),
-  new Product({name: "Love Don't let Me Go", artista: "David Guetta", duracion: "00:03:36", anio: "2002", genero: "Electronica",image :"./IMG/DAVID_GUETTA_1.jpg",urlSong: "./CANCIONES/David Guetta - Love Don-'t Let Me Go.mp3"}),
-  new Product({name: "Sexy Bitch", artista: "David Guetta", duracion: "00:03:15", anio: "2009", genero: "Electro Pop",image :"./IMG/DAVID_GUETTA_2.jpg",urlSong: "./CANCIONES/David Guetta - Sexy Bitch (feat. Akon).mp3"}),
-  new Product({name: "This Ones for you (feat. Zara larsson)", artista: "David Guetta", duracion: "00:03:27", anio: "2016", genero: "EDM",image :"./IMG/DAVID_GUETTA_3.jpg",urlSong: "./CANCIONES/David Guetta - This One-'s for You (feat. Zara Larsson) (Official Song UEFA EURO 2016).mp3"}),
-  new Product({name: "When Love Takes Over", artista: "David Guetta", duracion: "00:03:11",anio: "2009", genero: "Electronica",image :"./IMG/DAVID_GUETTA_4.jpg",urlSong: "./CANCIONES/David Guetta - When Love Takes Over (feat. Kelly Rowland).mp3"}),
-  new Product({name: "Electrónica", artista: "...", duracion: "", anio: "", genero: "",image :"./IMG/ELECTRONICA.jpg",urlSong: "./CANCIONES/Electronic - Electrónica.mp3"}),
-  new Product({name: "Film Out", artista: "BTS", duracion: "3:34", anio: "2021", genero: "K-POP",image :"./IMG/FILM_OUT.jpg",urlSong: "./CANCIONES/Film Out.mp3"}),
-  new Product({name: "GUETTE", artista: "...", duracion: "...", anio: "...", genero: "..",image :"./IMG/BALADA.jpg",urlSong: "./CANCIONES/Gambi - GUETTE.mp3"}),
-  new Product({name: "GIVEN-TAKEN", artista: "ENHYPEN", duracion: "3:03", anio: "2020", genero: "K-POP",image :"./IMG/BorderDayOne.png",urlSong: "./CANCIONES/GIVEN-TAKEN.mp3"}),
-  new Product({name: "Mi ex tenía Razón", artista: "Karol G", duracion: "00:02:41", anio: "2023", genero: "Pop",image :"./IMG/KAROLG.jpg",urlSong: "./CANCIONES/KAROL G - MI EX TENÍA RAZÓN.mp3" }),
-  new Product({name: "Maps", artista: "Maroon 5", duracion: "00:03:09", anio: "2014", genero: "Pop rock",image :"./IMG/Marron5_Maps.jpg",urlSong: "./CANCIONES/Marron5_Maps.mp3"}),
-  new Product({name: "Memories", artista: "Maroon 5", duracion: "00:03:15", anio: "2019", genero: "Reggae fusión",image :"./IMG/Marron5_memories.jpg",urlSong: "./CANCIONES/Marron5_Memories.mp3" }),
-  new Product({name: "Sugar", artista: "Maroon 5", duracion: "00:05:02", anio: "2015", genero: "Pop rock",image :"./IMG/Marron5_Sugar.jpg" ,urlSong: "./CANCIONES/Marron5_Sugar.mp3"}),
-  new Product({name: "Just Give me a Reason", artista: "Pink", duracion: "00:04:03", anio: "2012", genero: "Pop",image :"./IMG/Pink_Just.jpg",urlSong: "./CANCIONES/Pink.mp3"}),
-  new Product({name: "I'm not the only one", artista: "Sam Smith", duracion: "00:03:24", anio: "2014", genero: "Soul",image :"./IMG/SMITH_3.jpg",urlSong: "./CANCIONES/Sam Smith - I-'m Not The Only One.mp3"}),
-  new Product({name: "Too Good At Goodbyes", artista: "Sam Smith", duracion: "00:03:21", anio: "2018", genero: "Pop orquestal",image :"./IMG/SMITH_1.jpg",urlSong: "./CANCIONES/Sam Smith - Too Good At Goodbyes.mp3"}),
-  new Product({name: "Unholy", artista: "Sam Smith", duracion: "00:04:35", anio: "2023", genero: "Dance Pop",image :"./IMG/SMITH_2.jpg",urlSong: "./CANCIONES/Sam Smith - Unholy.mp3"}),
-  new Product({name: "Writing's on the Wall", artista: "Sam Smith", duracion: "00:04:45", anio: "2015", genero: "Pop",image :"./IMG/SMITH.jpg",urlSong: "./CANCIONES/Sam Smith - Writing-'s On The Wall.mp3"}),
-  new Product({name: "There's Nothing Holdin' me Back", artista: "Shawn Mendes", duracion: "00:03:28", anio: "2016", genero: "Pop",image :"./IMG/Shaw_mendes.jpg",urlSong: "./CANCIONES/Shawn Mendes - There's Nothing Holdin' Me Back.mp3"}),
-  new Product({name: "Sheluvme", artista: "Tai Verdes", duracion: "2:30", anio: "2022", genero: "POP",image :"./IMG/HDTV.png",urlSong: "./CANCIONES/Sheluvme.mp3"}),
-  new Product({name: "TOPLINE (Feat, Tiger JK", artista: "SKZ", duracion: "2023", anio: "3:23", genero: "K-POP",image :"./IMG/SCLASS.jpg",urlSong: "./CANCIONES/TOPLINE(Feat.TigerJK.mp3" }),
-  new Product({name: "You Should be Sad", artista: "Halsey", duracion: "3:25", anio: "2020", genero: "POP",image :"./IMG/Halsey-Manic.png",urlSong: "./CANCIONES/Youshouldbesad.mp3"})
+  new Product({ name: "Break On Through", artista: "The Doors", duracion: "00:02:29", anio: "1967", genero: "Rock", image: "./IMG/THEDOORS.png", urlSong: "./CANCIONES/01 Break On Through (To The Other Side).mp3" }),
+  new Product({ name: "B.Y.O.B", artista: "System of a Down", duracion: "00:04:16", anio: "2005", genero: "Trash Metal", image: "./IMG/SYSTEMOFADOWN.png", urlSong: ".CANCIONES//02 B.Y.O.B..mp3" }),
+  new Product({ name: "Cementery Gates", artista: "Pantera", duracion: "00:07:02", anio: "2003", genero: "Metal", image: "./IMG/PANTERA.png", urlSong: "./CANCIONES/02 Cemetery Gates - Remastered Version.mp3" }),
+  new Product({ name: "Reptilia", artista: "The Strokes", duracion: "00:03:29", anio: "2003", genero: "Alternative", image: "./IMG/THESTROKES.png", urlSong: "./CANCIONES/02 Reptilia.mp3" }),
+  new Product({ name: "St.Anger", artista: "Metallica", duracion: "00:07:21", anio: "2003", genero: "Nu Metal", image: "./IMG/METALLICA.png", urlSong: "./CANCIONES/02 St. Anger.mp3" }),
+  new Product({ name: "Cessio", artista: "Sal y Mileto", duracion: "00:09:30", anio: "2001", genero: "Rock Experimental", image: "./IMG/SALYMILETO.png", urlSong: "./CANCIONES/2-04 cessio.mp3" }),
+  new Product({ name: "Duality", artista: "Slipknot", duracion: "00:04:12", anio: "2004", genero: "Metal", image: "./IMG/SLIPKNOT.png", urlSong: "./CANCIONES/04 Duality.mp3" }),
+  new Product({ name: "Santa Monica", artista: "Theory of a Deadman", duracion: "00:04:06", anio: "2005", genero: "Rock", image: "./IMG/THEORYOFADEADMAN.png", urlSong: "./CANCIONES/05 Santa Monica.mp3" }),
+  new Product({ name: "Hoy tengo ganas de ti", artista: "Alejandro Fernandez", duracion: "00:04:51", anio: "2013", genero: "Balada Pop", image: "./IMG/BALADA.jpg", urlSong: "./CANCIONES/Alejandro Fernández - Hoy Tengo Ganas De Ti.mp3" }),
+  new Product({ name: "Love Don't let Me Go", artista: "David Guetta", duracion: "00:03:36", anio: "2002", genero: "Electronica", image: "./IMG/DAVID_GUETTA_1.jpg", urlSong: "./CANCIONES/David Guetta - Love Don-'t Let Me Go.mp3" }),
+  new Product({ name: "Sexy Bitch", artista: "David Guetta", duracion: "00:03:15", anio: "2009", genero: "Electro Pop", image: "./IMG/DAVID_GUETTA_2.jpg", urlSong: "./CANCIONES/David Guetta - Sexy Bitch (feat. Akon).mp3" }),
+  new Product({ name: "This Ones for you (feat. Zara larsson)", artista: "David Guetta", duracion: "00:03:27", anio: "2016", genero: "EDM", image: "./IMG/DAVID_GUETTA_3.jpg", urlSong: "./CANCIONES/David Guetta - This One-'s for You (feat. Zara Larsson) (Official Song UEFA EURO 2016).mp3" }),
+  new Product({ name: "When Love Takes Over", artista: "David Guetta", duracion: "00:03:11", anio: "2009", genero: "Electronica", image: "./IMG/DAVID_GUETTA_4.jpg", urlSong: "./CANCIONES/David Guetta - When Love Takes Over (feat. Kelly Rowland).mp3" }),
+  new Product({ name: "Electrónica", artista: "...", duracion: "", anio: "", genero: "", image: "./IMG/ELECTRONICA.jpg", urlSong: "./CANCIONES/Electronic - Electrónica.mp3" }),
+  new Product({ name: "Film Out", artista: "BTS", duracion: "3:34", anio: "2021", genero: "K-POP", image: "./IMG/FILM_OUT.jpg", urlSong: "./CANCIONES/Film Out.mp3" }),
+  new Product({ name: "GUETTE", artista: "...", duracion: "...", anio: "...", genero: "..", image: "./IMG/BALADA.jpg", urlSong: "./CANCIONES/Gambi - GUETTE.mp3" }),
+  new Product({ name: "GIVEN-TAKEN", artista: "ENHYPEN", duracion: "3:03", anio: "2020", genero: "K-POP", image: "./IMG/BorderDayOne.png", urlSong: "./CANCIONES/GIVEN-TAKEN.mp3" }),
+  new Product({ name: "Mi ex tenía Razón", artista: "Karol G", duracion: "00:02:41", anio: "2023", genero: "Pop", image: "./IMG/KAROLG.jpg", urlSong: "./CANCIONES/KAROL G - MI EX TENÍA RAZÓN.mp3" }),
+  new Product({ name: "Maps", artista: "Maroon 5", duracion: "00:03:09", anio: "2014", genero: "Pop rock", image: "./IMG/Marron5_Maps.jpg", urlSong: "./CANCIONES/Marron5_Maps.mp3" }),
+  new Product({ name: "Memories", artista: "Maroon 5", duracion: "00:03:15", anio: "2019", genero: "Reggae fusión", image: "./IMG/Marron5_memories.jpg", urlSong: "./CANCIONES/Marron5_Memories.mp3" }),
+  new Product({ name: "Sugar", artista: "Maroon 5", duracion: "00:05:02", anio: "2015", genero: "Pop rock", image: "./IMG/Marron5_Sugar.jpg", urlSong: "./CANCIONES/Marron5_Sugar.mp3" }),
+  new Product({ name: "Just Give me a Reason", artista: "Pink", duracion: "00:04:03", anio: "2012", genero: "Pop", image: "./IMG/Pink_Just.jpg", urlSong: "./CANCIONES/Pink.mp3" }),
+  new Product({ name: "I'm not the only one", artista: "Sam Smith", duracion: "00:03:24", anio: "2014", genero: "Soul", image: "./IMG/SMITH_3.jpg", urlSong: "./CANCIONES/Sam Smith - I-'m Not The Only One.mp3" }),
+  new Product({ name: "Too Good At Goodbyes", artista: "Sam Smith", duracion: "00:03:21", anio: "2018", genero: "Pop orquestal", image: "./IMG/SMITH_1.jpg", urlSong: "./CANCIONES/Sam Smith - Too Good At Goodbyes.mp3" }),
+  new Product({ name: "Unholy", artista: "Sam Smith", duracion: "00:04:35", anio: "2023", genero: "Dance Pop", image: "./IMG/SMITH_2.jpg", urlSong: "./CANCIONES/Sam Smith - Unholy.mp3" }),
+  new Product({ name: "Writing's on the Wall", artista: "Sam Smith", duracion: "00:04:45", anio: "2015", genero: "Pop", image: "./IMG/SMITH.jpg", urlSong: "./CANCIONES/Sam Smith - Writing-'s On The Wall.mp3" }),
+  new Product({ name: "There's Nothing Holdin' me Back", artista: "Shawn Mendes", duracion: "00:03:28", anio: "2016", genero: "Pop", image: "./IMG/Shaw_mendes.jpg", urlSong: "./CANCIONES/Shawn Mendes - There's Nothing Holdin' Me Back.mp3" }),
+  new Product({ name: "Sheluvme", artista: "Tai Verdes", duracion: "2:30", anio: "2022", genero: "POP", image: "./IMG/HDTV.png", urlSong: "./CANCIONES/Sheluvme.mp3" }),
+  new Product({ name: "TOPLINE (Feat, Tiger JK", artista: "SKZ", duracion: "2023", anio: "3:23", genero: "K-POP", image: "./IMG/SCLASS.jpg", urlSong: "./CANCIONES/TOPLINE(Feat.TigerJK.mp3" }),
+  new Product({ name: "You Should be Sad", artista: "Halsey", duracion: "3:25", anio: "2020", genero: "POP", image: "./IMG/Halsey-Manic.png", urlSong: "./CANCIONES/Youshouldbesad.mp3" })
 
 ]
 
@@ -478,12 +485,47 @@ function changeCurrentProduct(id) {
   productContainer.innerHTML = `
         <img class="product-img" src="${product.image}" alt="shoe" />
         <h2 class="product-name">
-          ${product.nombre}
+          ${product.name}
         </h2>
         <div class="product-price">
-          <span class="tachado">$${product.artista}</span>
-          <span>$${product.duracion}</span>
+          <span >Artista:  ${product.artista}</span>
         </div>
+        <div class="product-price">
+          <span>Duración: ${product.duracion}</span>
+        </div>
+        <div class="product-price">
+        <span>Año: ${product.anio}</span>
+      </div>
+      <div class="product-price">
+        
+        <span>Género: ${product.genero}</span>
+        
+      </div>
+
+      <div class="product-price">
+      <span class="price">
+      <button class="boton-backward">
+          <i class="bi bi-skip-backward"></i>
+      </button>
+      <button id= "play" class="boton-play">
+          <i class="bi bi-play"></i>
+      </button>
+      <button class="boton-forward">
+          <i class="bi bi-skip-forward"></i>
+      </button>
+      <button id = "pause" class="boton-pause">
+          <i class="bi bi-pause"></i>
+      </button>
+      <button id = "mute" class="boton-mute">
+          <i class="bi bi-stop"></i>
+      </button>
+    
+  </span>
+     
+      
+    </div>
+
+
 
         ${product.isFavorite ?
       `<button class="add-to-cart-btn secondary-btn" onClick="removeCurrentProductFromFavorite()">
@@ -491,16 +533,21 @@ function changeCurrentProduct(id) {
     </button >`
       :
       `<button class="add-to-cart-btn secondary-btn" onClick="addCurrentProductToFavorite()">
-    <i class="bi bi-heart"></i> Add to favorites
-  </button >`}
+    <i class="bi bi-heart"></i> 
+  </button >`
+
+
+
+
+    }
 
           ${product.inCart ?
       `<button class="add-to-cart-btn" onClick="removeCurrentProductFromCart()">
-          <i class="bi bi-x-lg"></i> Remove from cart
+          <i class="bi bi-x-lg"></i> Remove from playlist
         </button>`
       :
       `<button class="add-to-cart-btn" onClick="addCurrentProductToCart()">
-          <i class="bi bi-cart"></i> Add to cart
+          <i class="bi bi-plus"></i> 
         </button>`}
 `
 }
@@ -513,7 +560,7 @@ const productsContainerList = document.getElementById('products')
 const favoritesContainerList = document.getElementById('favorites')
 
 const products = new ProductList({ name: 'All products', products: allProducts, container: productsContainerList })
-const cart = new ProductList({ name: 'Cart', container: cartContainerList })
+const cart = new ProductList({ name: 'cart', container: cartContainerList })
 const favorites = new ProductList({ name: 'Favorites', container: favoritesContainerList })
 
 function onStart() {
@@ -534,6 +581,45 @@ searchInput.addEventListener('keypress', (event) => {
     products.searchProduct(searchInput.value)
   }
 })
+
+/* REPRODUCIR AUDIO */
+
+const audio = new Audio("./CANCIONES/01 Break On Through (To The Other Side).mp3")
+
+audio.currentTime = 245
+
+
+const play = document.getElementById('play')
+const pause = document.getElementById('pause')
+const mute = document.getElementById('mute')
+const sound = document.getElementById('sound')
+
+play.addEventListener('click', () => {
+  audio.play()
+})
+
+pause.addEventListener('click', () => {
+  audio.pause()
+})
+
+mute.addEventListener('click', () => {
+  audio.volume = 0
+})
+
+sound.addEventListener('click', () => {
+  audio.volume = 0.1
+})
+
+search.addEventListener('click', () => {
+  audio.src = input.value
+})
+
+audio.addEventListener('ended', () => {
+  alert('termino el audio, paso al siguiente')
+  audio.src = "./CANCIONES/01 Break On Through (To The Other Side).mp3"
+  audio.play()
+})
+
 
 
 

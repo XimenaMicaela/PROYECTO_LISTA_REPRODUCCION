@@ -39,6 +39,13 @@ body {
   gap: var(--gap-xl);
 }
 
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: 4rem;
+  font-weight: bolder;
+}
+
 header {
   margin-bottom: 24px;
 
@@ -47,70 +54,67 @@ header {
     justify-content: space-between;
     align-items: center;
 
-    a {
-      color: var(--primary-color);
-      text-decoration: none;
-      font-size: 4rem;
-      font-weight: bolder;
-    }
 
     .right-nav {
-        display: flex;
-        flex-direction: column;
-        gap: var(--gap);
-        justify-content: center;
-    
-        .product-name {
-          font-size: 5rem;
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap);
+      justify-content: center;
+
+      .product-name {
+        font-size: 5rem;
+      }
+
+      .boton-backward {
+        background-color: var(--primary-color);
+        color: var(--background-color);
+        font-size: 2.4rem;
+        padding: 12px 24px;
+        border-radius: var(--border-radius);
+        border: none;
+        transition: var(--transition);
+        cursor: pointer;
+        font-weight: 500;
+
+        &:hover {
+          background-color: var(--secondary-color);
         }
-    
-        .boton-backward {
-            background-color: var(--primary-color);
-            color: var(--background-color);
-            font-size: 2.4rem;
-            padding: 12px 24px;
-            border-radius: var(--border-radius);
-            border: none;
-            transition: var(--transition);
-            cursor: pointer;
-            font-weight: 500;
-      
-            &:hover {
-              background-color: var(--secondary-color);
-            }
-          }
-          .boton-play {
-            background-color: var(--primary-color);
-            color: var(--background-color);
-            font-size: 2.4rem;
-            padding: 12px 24px;
-            border-radius: var(--border-radius);
-            border: none;
-            transition: var(--transition);
-            cursor: pointer;
-            font-weight: 500;
-      
-            &:hover {
-              background-color: var(--secondary-color);
-            }
-          }
-          .boton-pause {
-            background-color: var(--primary-color);
-            color: var(--background-color);
-            font-size: 2.4rem;
-            padding: 12px 24px;
-            border-radius: var(--border-radius);
-            border: none;
-            transition: var(--transition);
-            cursor: pointer;
-            font-weight: 500;
-      
-            &:hover {
-              background-color: var(--secondary-color);
-            }
-          }
-    
-       
+      }
+
+      .boton-play {
+        background-color: var(--primary-color);
+        color: var(--background-color);
+        font-size: 2.4rem;
+        padding: 12px 24px;
+        border-radius: var(--border-radius);
+        border: none;
+        transition: var(--transition);
+        cursor: pointer;
+        font-weight: 500;
+
+        &:hover {
+          background-color: var(--secondary-color);
+        }
+      }
+
+      .boton-pause {
+        background-color: var(--primary-color);
+        color: var(--background-color);
+        font-size: 2.4rem;
+        padding: 12px 24px;
+        border-radius: var(--border-radius);
+        border: none;
+        transition: var(--transition);
+        cursor: pointer;
+        font-weight: 500;
+
+        &:hover {
+          background-color: var(--secondary-color);
+        }
+      }
+
+
+
     }
   }
 }
@@ -172,7 +176,12 @@ main {
                 max-width: 128px;
                 border-radius: var(--border-radius);
               }
+
             }
+            
+
+
+
           }
         }
       }
@@ -190,103 +199,105 @@ main {
     }
 
     .boton-play {
-        background-color: var(--primary-color);
-        color: var(--background-color);
-        font-size: 2.4rem;
-        padding: 12px 24px;
-        border-radius: var(--border-radius);
-        border: none;
-        transition: var(--transition);
-        cursor: pointer;
-        font-weight: 500;
-  
-        &:hover {
-          background-color: var(--secondary-color);
-        }
-      }
-      .boton-pause {
-        background-color: var(--primary-color);
-        color: var(--background-color);
-        font-size: 2.4rem;
-        padding: 12px 24px;
-        border-radius: var(--border-radius);
-        border: none;
-        transition: var(--transition);
-        cursor: pointer;
-        font-weight: 500;
-  
-        &:hover {
-          background-color: var(--secondary-color);
-        }
-      }
-      .boton-backward {
-        background-color: var(--primary-color);
-        color: var(--background-color);
-        font-size: 2.4rem;
-        padding: 12px 24px;
-        border-radius: var(--border-radius);
-        border: none;
-        transition: var(--transition);
-        cursor: pointer;
-        font-weight: 500;
-  
-        &:hover {
-          background-color: var(--secondary-color);
-        }
-      }
+      background-color: var(--primary-color);
+      color: var(--background-color);
+      font-size: 2.4rem;
+      padding: 12px 24px;
+      border-radius: var(--border-radius);
+      border: none;
+      transition: var(--transition);
+      cursor: pointer;
+      font-weight: 500;
 
-      .boton-forward {
-        background-color: var(--primary-color);
-        color: var(--background-color);
-        font-size: 2.4rem;
-        padding: 12px 24px;
-        border-radius: var(--border-radius);
-        border: none;
-        transition: var(--transition);
-        cursor: pointer;
-        font-weight: 500;
-  
-        &:hover {
-          background-color: var(--secondary-color);
-        }
+      &:hover {
+        background-color: var(--secondary-color);
       }
+    }
 
-      .boton-mute {
-        background-color: var(--primary-color);
-        color: var(--background-color);
-        font-size: 2.4rem;
-        padding: 12px 24px;
-        border-radius: var(--border-radius);
-        border: none;
-        transition: var(--transition);
-        cursor: pointer;
-        font-weight: 500;
-  
-        &:hover {
-          background-color: var(--secondary-color);
-        }
-      }
+    .boton-pause {
+      background-color: var(--primary-color);
+      color: var(--background-color);
+      font-size: 2.4rem;
+      padding: 12px 24px;
+      border-radius: var(--border-radius);
+      border: none;
+      transition: var(--transition);
+      cursor: pointer;
+      font-weight: 500;
 
-      .add-to-cart-btn {
-        background-color: var(--primary-color);
-        color: var(--background-color);
-        font-size: 2.4rem;
-        padding: 12px 24px;
-        border-radius: var(--border-radius);
-        border: none;
-        transition: var(--transition);
-        cursor: pointer;
-        font-weight: 500;
-  
-        &:hover {
-          background-color: var(--secondary-color);
-        }
+      &:hover {
+        background-color: var(--secondary-color);
       }
-  
-      .secondary-btn {
-        background-color: var(--light-background);
-        color: var(--primary-color);
+    }
+
+    .boton-backward {
+      background-color: var(--primary-color);
+      color: var(--background-color);
+      font-size: 2.4rem;
+      padding: 12px 24px;
+      border-radius: var(--border-radius);
+      border: none;
+      transition: var(--transition);
+      cursor: pointer;
+      font-weight: 500;
+
+      &:hover {
+        background-color: var(--secondary-color);
       }
+    }
+
+    .boton-forward {
+      background-color: var(--primary-color);
+      color: var(--background-color);
+      font-size: 2.4rem;
+      padding: 12px 24px;
+      border-radius: var(--border-radius);
+      border: none;
+      transition: var(--transition);
+      cursor: pointer;
+      font-weight: 500;
+
+      &:hover {
+        background-color: var(--secondary-color);
+      }
+    }
+
+    .boton-mute {
+      background-color: var(--primary-color);
+      color: var(--background-color);
+      font-size: 2.4rem;
+      padding: 12px 24px;
+      border-radius: var(--border-radius);
+      border: none;
+      transition: var(--transition);
+      cursor: pointer;
+      font-weight: 500;
+
+      &:hover {
+        background-color: var(--secondary-color);
+      }
+    }
+
+    .add-to-cart-btn {
+      background-color: var(--primary-color);
+      color: var(--background-color);
+      font-size: 2.4rem;
+      padding: 8px 10px;
+      border-radius: var(--border-radius);
+      border: none;
+      transition: var(--transition);
+      cursor: pointer;
+      font-weight: 500;
+
+      &:hover {
+        background-color: var(--secondary-color);
+      }
+    }
+
+    .secondary-btn {
+      background-color: var(--light-background);
+      color: var(--primary-color);
+    }
 
     .product-price {
       font-size: 2.5rem;
@@ -312,9 +323,10 @@ main {
 
 }
 
- /* Login */
 
- .loginForm {
+/* Login */
+
+.loginForm {
   display: grid;
   min-height: 100vh;
   place-content: center;
@@ -388,9 +400,3 @@ img {
   aspect-ratio: 16 / 9;
   object-fit: cover;
 }
-
-
-
-
-
-
