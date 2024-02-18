@@ -38,34 +38,37 @@ class ProductList {
   }
 
   renderList() {
-    if (this.products.length === 0) this.container.innerHTML = `<p class="productsError">Playlist vacía</p>`
-    else this.container.innerHTML = this.products.map((p) => `
+    if (this.products.length === 0)
+      this.container.innerHTML = `<p class="productsError">Playlist vacía</p>`
+    else
+       this.container.innerHTML = this.products.map((p) => `
      <div class="product" onclick="changeCurrentProduct(${p.id})">
                 <div class="left-product">
                   <img src=${p.image} alt="song" />
-                  <h4>${p.name}</h4>
-                  
+                  <h4>${p.name}</h4>     
                 </div>
-           
               </div>
     `)
+    
   }
 
   searchProduct(query) {
-    const results = this.products.filter(p => p.name.toLowerCase().includes(query.toLowerCase()))
-    if (results.length === 0) this.container.innerHTML = `<p class="productsError">Playlist vacia</p>`
-    else productsContainerList.innerHTML = results.map((p) => `
-     <div class="product" onclick="changeCurrentProduct(${p.id})">
-                <div class="left-product">
-                  <img src=${p.image} alt="song" />
-                  <h4>${p.name}</h4>
-                
-                </div>
-              </div>
-    `)
-
-    
+    const results = this.products.filter(p => p.name.toLowerCase().includes(query.toLowerCase()) || p.artista.toLowerCase().includes(query.toLowerCase()));
+    if (results.length === 0) {
+      this.container.innerHTML = `<p class="productsError">Playlist vacía</p>`;
+    } else {
+      this.container.innerHTML = results.map((p) => `
+        <div class="product" onclick="changeCurrentProduct(${p.id})">
+          <div class="left-product">
+            <img src=${p.image} alt="song" />
+            <h4>${p.name}</h4>
+            <p>Artista: ${p.artista}</p>
+          </div>
+        </div>
+      `).join(''); // Use join() to convert the array of HTML strings into a single string
+    }
   }
+  
 
   addProduct(product) {
     if (this.name === 'Favorites') product.isFavorite = true
@@ -120,7 +123,9 @@ const allProducts = [
 
 ]
 
-/* Current product */
+
+
+/* Current song */
 
 const productContainer = document.getElementById('product-container')
 let currentProduct
@@ -160,10 +165,9 @@ function changeCurrentProduct(id) {
   audio.src = product.urlSong; // Actualizar la URL del objeto Audio
   audio.pause(); // Pausar la reproducción actual
   audio.load(); // Recargar el audio con la nueva URL
-  audio.play(); // Iniciar la reproducción del nuevo audio
- 
- 
   isPlaying = false;
+ /*  audio.play(); // Iniciar la reproducción del nuevo audio */
+  
   productContainer.innerHTML = `
         <img class="product-img" src="${product.image}" alt="shoe" />
         <h2 class="product-name">
