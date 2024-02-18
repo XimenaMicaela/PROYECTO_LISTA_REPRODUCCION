@@ -251,22 +251,20 @@ searchInput.addEventListener('keypress', (event) => {
 /* REPRODUCIR AUDIO */
 
 function playNextAudio() {
-  const currentIndex = allProducts.indexOf(currentProduct);
   const currentList = currentProductList(); // Obtener la lista actual (Favorites, cart, etc.)
+  const currentIndex = currentList.products.indexOf(currentProduct);
   const nextIndex = (currentIndex + 1) % currentList.order.length;
   const nextProductId = currentList.order[nextIndex];
   changeCurrentProduct(nextProductId);
 }
 
 function playPreviousAudio() {
-  const currentIndex = allProducts.indexOf(currentProduct);
   const currentList = currentProductList(); // Obtener la lista actual (Favorites, cart, etc.)
+  const currentIndex = currentList.products.indexOf(currentProduct);
   const previousIndex = (currentIndex - 1 + currentList.order.length) % currentList.order.length;
   const previousProductId = currentList.order[previousIndex];
   changeCurrentProduct(previousProductId);
 }
-
-
 
 play.addEventListener('click', () => {
   console.log("Play");
