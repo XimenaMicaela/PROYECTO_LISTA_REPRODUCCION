@@ -476,12 +476,9 @@ function removeCurrentProductFromFavorite() {
 }
 const audio = new Audio();
 
-const play = document.getElementById('play')
-const pause = document.getElementById('pause')
-const mute = document.getElementById('mute')
-const sound = document.getElementById('sound')
+
 let isPlaying = false;
- 
+
 function changeCurrentProduct(id) {
   const product = allProducts.find(p => p.id === id);
 
@@ -490,6 +487,8 @@ function changeCurrentProduct(id) {
   audio.pause(); // Pausar la reproducción actual
   audio.load(); // Recargar el audio con la nueva URL
   audio.play(); // Iniciar la reproducción del nuevo audio
+  audio.backward();
+  isPlaying = false;
   productContainer.innerHTML = `
         <img class="product-img" src="${product.image}" alt="shoe" />
         <h2 class="product-name">
@@ -510,28 +509,7 @@ function changeCurrentProduct(id) {
         
       </div>
 
-      <div class="product-price">
-      <span class="price">
-      <button id= "backward"class="boton-backward">
-          <i class="bi bi-skip-backward"></i>
-      </button>
-      <button id= "play" class="boton-play">
-          <i class="bi bi-play"></i>
-      </button>
-      <button id = "forward" class="boton-forward">
-          <i class="bi bi-skip-forward"></i>
-      </button>
-      <button id = "pause" class="boton-pause">
-          <i class="bi bi-pause"></i>
-      </button>
-      <button id = "mute" class="boton-mute">
-          <i class="bi bi-stop"></i>
-      </button>
-    
-  </span>
      
-      
-    </div>
 
 
 
@@ -619,11 +597,15 @@ search.addEventListener('click', () => {
   currentAudio.src = input.value;
 });
 
+backward.addEventListener('click', () => {
+  currentAudio.src = input.value;
+});
+
 currentAudio.addEventListener('ended', () => {
   alert('Terminó el audio, pasando al siguiente');
   playNextAudio();
 });
- 
+
 
 
 
