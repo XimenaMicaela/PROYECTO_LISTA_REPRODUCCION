@@ -59,7 +59,7 @@ class ProductList {
       p.genero.toLowerCase().includes(query.toLowerCase())
     );
     if (results.length === 0) {
-      this.container.innerHTML = `<p class="productsError">Playlist vacía</p>`;
+      this.container.innerHTML = `<p class="productsError">Playlist empty</p>`;
     } else {
       this.container.innerHTML = results.map((p) => `
         <div class="product" onclick="changeCurrentProduct(${p.id})">
@@ -174,7 +174,7 @@ function changeCurrentProduct(id) {
  /*  audio.play(); // Iniciar la reproducción del nuevo audio */
   
   productContainer.innerHTML = `
-        <img class="product-img" src="${product.image}" alt="shoe" />
+        <img class="product-img" src="${product.image}" alt="song" />
         <h2 class="product-name">
           ${product.name}
         </h2>
