@@ -376,9 +376,7 @@ class ProductList {
                 <div class="left-product">
                   <img src=${p.image} alt="shoe" />
                   <h4>${p.name}</h4>
-                  <button id= "play" class="boton-play">
-          <i class="bi bi-play"></i>
-      </button>
+                  
                 </div>
            
               </div>
@@ -391,11 +389,9 @@ class ProductList {
     else productsContainerList.innerHTML = results.map((p) => `
      <div class="product" onClick="changeCurrentProduct(${p.id})">
                 <div class="left-product">
-                  <img src=${p.image} alt="shoe" />
+                  <img src=${p.image} alt="sh" />
                   <h4>${p.name}</h4>
-                  <button id= "play" class="boton-play">
-          <i class="bi bi-play"></i>
-      </button>
+                
                 </div>
               </div>
     `)
@@ -435,7 +431,7 @@ const allProducts = [
   new Product({ name: "This Ones for you (feat. Zara larsson)", artista: "David Guetta", duracion: "00:03:27", anio: "2016", genero: "EDM", image: "./IMG/DAVID_GUETTA_3.jpg", urlSong: "./CANCIONES/David Guetta - This One-'s for You (feat. Zara Larsson) (Official Song UEFA EURO 2016).mp3" }),
   new Product({ name: "When Love Takes Over", artista: "David Guetta", duracion: "00:03:11", anio: "2009", genero: "Electronica", image: "./IMG/DAVID_GUETTA_4.jpg", urlSong: "./CANCIONES/David Guetta - When Love Takes Over (feat. Kelly Rowland).mp3" }),
   new Product({ name: "Electrónica", artista: "...", duracion: "", anio: "", genero: "", image: "./IMG/ELECTRONICA.jpg", urlSong: "./CANCIONES/Electronic - Electrónica.mp3" }),
-  new Product({ name: "Film Out", artista: "BTS", duracion: "3:34", anio: "2021", genero: "K-POP", image: "./IMG/FILM_OUT.jpg", urlSong: "./CANCIONES/Film Out.mp3" }),
+  new Product({ name: "Film Out", artista: "BTS", duracion: "3:34", anio: "2021", genero: "K-POP", image: "./IMG/FILM_OUT.jpg", urlSong: "./CANCIONES/Film Out..mp3" }),
   new Product({ name: "GUETTE", artista: "...", duracion: "...", anio: "...", genero: "..", image: "./IMG/BALADA.jpg", urlSong: "./CANCIONES/Gambi - GUETTE.mp3" }),
   new Product({ name: "GIVEN-TAKEN", artista: "ENHYPEN", duracion: "3:03", anio: "2020", genero: "K-POP", image: "./IMG/BorderDayOne.png", urlSong: "./CANCIONES/GIVEN-TAKEN.mp3" }),
   new Product({ name: "Mi ex tenía Razón", artista: "Karol G", duracion: "00:02:41", anio: "2023", genero: "Pop", image: "./IMG/KAROLG.jpg", urlSong: "./CANCIONES/KAROL G - MI EX TENÍA RAZÓN.mp3" }),
@@ -449,7 +445,7 @@ const allProducts = [
   new Product({ name: "Writing's on the Wall", artista: "Sam Smith", duracion: "00:04:45", anio: "2015", genero: "Pop", image: "./IMG/SMITH.jpg", urlSong: "./CANCIONES/Sam Smith - Writing-'s On The Wall.mp3" }),
   new Product({ name: "There's Nothing Holdin' me Back", artista: "Shawn Mendes", duracion: "00:03:28", anio: "2016", genero: "Pop", image: "./IMG/Shaw_mendes.jpg", urlSong: "./CANCIONES/Shawn Mendes - There's Nothing Holdin' Me Back.mp3" }),
   new Product({ name: "Sheluvme", artista: "Tai Verdes", duracion: "2:30", anio: "2022", genero: "POP", image: "./IMG/HDTV.png", urlSong: "./CANCIONES/Sheluvme.mp3" }),
-  new Product({ name: "TOPLINE (Feat, Tiger JK", artista: "SKZ", duracion: "2023", anio: "3:23", genero: "K-POP", image: "./IMG/SCLASS.jpg", urlSong: "./CANCIONES/TOPLINE(Feat.TigerJK.mp3" }),
+  new Product({ name: "TOPLINE (Feat, Tiger JK", artista: "SKZ", duracion: "2023", anio: "3:23", genero: "K-POP", image: "./IMG/SCLASS.jpg", urlSong: "./CANCIONES/TOPLINE.mp3" }),
   new Product({ name: "You Should be Sad", artista: "Halsey", duracion: "3:25", anio: "2020", genero: "POP", image: "./IMG/Halsey-Manic.png", urlSong: "./CANCIONES/Youshouldbesad.mp3" })
 
 ]
@@ -478,15 +474,22 @@ function removeCurrentProductFromFavorite() {
   favorites.removeProduct(currentProduct)
   changeCurrentProduct(currentProduct.id)
 }
+const audio = new Audio();
 
+const play = document.getElementById('play')
+const pause = document.getElementById('pause')
+const mute = document.getElementById('mute')
+const sound = document.getElementById('sound')
+let isPlaying = false;
+ 
 function changeCurrentProduct(id) {
   const product = allProducts.find(p => p.id === id);
 
   currentProduct = product;
- /*  audio.src = product.urlSong; // Actualizar la URL del objeto Audio
+  audio.src = product.urlSong; // Actualizar la URL del objeto Audio
   audio.pause(); // Pausar la reproducción actual
   audio.load(); // Recargar el audio con la nueva URL
-  audio.play(); // Iniciar la reproducción del nuevo audio */
+  audio.play(); // Iniciar la reproducción del nuevo audio
   productContainer.innerHTML = `
         <img class="product-img" src="${product.image}" alt="shoe" />
         <h2 class="product-name">
@@ -509,13 +512,13 @@ function changeCurrentProduct(id) {
 
       <div class="product-price">
       <span class="price">
-      <button class="boton-backward">
+      <button id= "backward"class="boton-backward">
           <i class="bi bi-skip-backward"></i>
       </button>
       <button id= "play" class="boton-play">
           <i class="bi bi-play"></i>
       </button>
-      <button class="boton-forward">
+      <button id = "forward" class="boton-forward">
           <i class="bi bi-skip-forward"></i>
       </button>
       <button id = "pause" class="boton-pause">
@@ -589,88 +592,24 @@ searchInput.addEventListener('keypress', (event) => {
 
 /* REPRODUCIR AUDIO */
 
-const createAudio = (url) => {
-  const audio = new Audio(url);
-  audio.volume = 0.1;
-  return audio;
-};
-
-let currentAudioIndex = 0;
-let currentAudio = createAudio(allProducts[currentAudioIndex].urlSong);
-
-const playNextAudio = () => {
-  currentAudioIndex = (currentAudioIndex + 1) % allProducts.length;
-  currentAudio.src = allProducts[currentAudioIndex].urlSong;
-  currentAudio.play();
-};
-
-
-
-/* const newAudio = (url) => {
-  const audio = new Audio(url);
-  audio.volume = 0.1;
-  return audio;
-};
-
-// Crear nuevos objetos Audio para cada URL de urlSong en allProducts
-const audioObjects = allProducts.map(Product => newAudio(Product.urlSong));
-/* 
-const audio = new Audio(product.urlSong); */
-
-/* audio.volume = 0.1; */ 
-
-/* let currentTrackIndex = 0; */
-
-
-/* audio.currentTime = 245 */
-
-
-const play = document.getElementById('play')
-const pause = document.getElementById('pause')
-const mute = document.getElementById('mute')
-const sound = document.getElementById('sound')
-
-/* play.addEventListener('click', () => {
-  audio.play()
-})
-
-pause.addEventListener('click', () => {
-  audio.pause()
-})
-
-mute.addEventListener('click', () => {
-  audio.volume = 0
-})
-
-sound.addEventListener('click', () => {
-  audio.volume = 0.1
-})
-
-search.addEventListener('click', () => {
-  audio.src = input.value
-})
-
-
-audio.addEventListener('ended', () => {
-  alert('Terminó el audio, pasando a la siguiente canción');
-  currentTrackIndex = (currentTrackIndex + 1) % audioObjects.length;
-  audio.src = audioObjects[currentTrackIndex];
-  audio.play();
-}); */
-
-
-
 play.addEventListener('click', () => {
-  currentAudio.play();
+  if (isPlaying) {
+    audio.pause();
+  } else {
+    audio.play();
+  }
+  isPlaying = !isPlaying;
 });
 
 pause.addEventListener('click', () => {
-  currentAudio.pause();
+  audio.pause();
+  isPlaying = false;
 });
 
 mute.addEventListener('click', () => {
-  currentAudio.volume = 0;
+  audio.volume = 0;
 });
+
 
 sound.addEventListener('click', () => {
   currentAudio.volume = 0.1;
@@ -682,20 +621,10 @@ search.addEventListener('click', () => {
 
 currentAudio.addEventListener('ended', () => {
   alert('Terminó el audio, pasando al siguiente');
-  audio.src = ".CANCIONES//02 B.Y.O.B..mp3"
   playNextAudio();
 });
+ 
 
-
-/* 
-function changeCurrentProduct(id) {
-  const product = allProducts.find(p => p.id === id);
-  currentProduct = product;
-  audio.src = product.urlSong; // Actualizar la URL del objeto Audio
-  audio.pause(); // Pausar la reproducción actual
-  audio.load(); // Recargar el audio con la nueva URL
-  audio.play(); // Iniciar la reproducción del nuevo audio
-   */
 
 
 
