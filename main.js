@@ -11,11 +11,10 @@ if (!localStorage.getItem('isLogged')) {
 
 class Product {
   static idCounter = 0;
-  constructor({ name, price = 200, discountedPrice = 100, artista, duracion, anio, genero, urlSong, image, isFavorite = false, inCart = false }) {
+  constructor({ name, artista, duracion, anio, genero, urlSong, image, isFavorite = false, inCart = false }) {
     this.id = Product.idCounter++;
     this.name = name;
-    this.price = price;
-    this.discountedPrice = discountedPrice;
+   
     this.artista = artista;
     this.duracion = duracion;
     this.anio = anio;
@@ -38,9 +37,9 @@ class ProductList {
   }
 
   renderList() {
-    if (this.products.length === 0)
+    if (this.products.length === 0){
       this.container.innerHTML = `<p class="productsError">Playlist vacía</p>`
-    else
+    }else{
        this.container.innerHTML = this.products.map((p) => `
      <div class="product" onclick="changeCurrentProduct(${p.id})">
                 <div class="left-product">
@@ -48,7 +47,7 @@ class ProductList {
                   <h4>${p.name}</h4>     
                 </div>
               </div>
-    `)
+    `)}
     
   }
 
@@ -154,18 +153,12 @@ function removeCurrentProductFromFavorite() {
   favorites.removeProduct(currentProduct)
   changeCurrentProduct(currentProduct.id)
 }
+
 const audio = new Audio();
-
-
 let isPlaying = false;
 
 function changeCurrentProduct(id) {
-
-
-  
   const product = allProducts.find(p => p.id === id); 
- 
-
   currentProduct = product;
   audio.src = product.urlSong; // Actualizar la URL del objeto Audio
   audio.pause(); // Pausar la reproducción actual
@@ -216,10 +209,6 @@ function changeCurrentProduct(id) {
 `
 }
 changeCurrentProduct(0)
-
-
-
-
 
 
 const cartContainerList = document.getElementById('cart')
@@ -281,38 +270,41 @@ play.addEventListener('click', () => {
 });
 
 pause.addEventListener('click', () => {
+  console.log("Pause");
   audio.pause();
   isPlaying = false;
 });
 
 mute.addEventListener('click', () => {
+  console.log("mute");
   audio.volume = 0;
 });
 
 
-sound.addEventListener('click', () => {
+/* sound.addEventListener('click', () => {
   currentAudio.volume = 0.1;
-});
+}); */
 
 search.addEventListener('click', () => {
   currentAudio.src = input.value;
 });
 
 
-currentAudio.addEventListener('ended', () => {
+/* currentAudio.addEventListener('ended', () => {
   alert('Terminó el audio, pasando al siguiente');
   playNextAudio();
 });
-
+ */
 
 
 document.getElementById('backward').addEventListener('click', () => {
+  console.log("Prev");
   
   playPreviousAudio();
 });
 
 document.getElementById('forward').addEventListener('click', () => {
-  
+  console.log("next");
   playNextAudio();
 });
 
