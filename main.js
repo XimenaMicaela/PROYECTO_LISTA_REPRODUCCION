@@ -276,8 +276,17 @@ pause.addEventListener('click', () => {
 });
 
 mute.addEventListener('click', () => {
-  console.log("mute");
-  audio.volume = 0;
+  if (audio.volume === 0) {
+    // If audio is muted, unmute it
+    audio.volume = 1;
+    // Change the icon to indicate sound is on
+    document.getElementById('mute').innerHTML = '<i class="bi bi-volume-mute"></i>';
+  } else {
+    // If audio is not muted, mute it
+    audio.volume = 0;
+    // Change the icon to indicate sound is off
+    document.getElementById('mute').innerHTML = '<i class="bi bi-volume-mute"></i>';
+  }
 });
 
 
