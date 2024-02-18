@@ -80,7 +80,10 @@ class ProductList {
       product.isFavorite = true;
       this.order.push(product.id); // Agregar el ID del producto al historial de reproducción
     }
-    if (this.name === 'cart') product.inCart = true;
+    if (this.name === 'cart') {
+      product.inCart = true;
+      this.order.push(product.id); // Agregar el ID del producto al historial de reproducción del carrito
+    }
     this.products.push(product);
     this.renderList();
   }
@@ -250,17 +253,30 @@ searchInput.addEventListener('keypress', (event) => {
 
 /* REPRODUCIR AUDIO */
 
+function currentProductList() {
+  // Determinar la lista actual basándose en la variable currentProduct
+  if (favorites.products.includes(currentProduct)) {
+    return favorites;
+  } else if (cart.products.includes(currentProduct)) {
+    return cart;
+  } else {
+    return products; // O cualquier otra lógica que uses para determinar la lista actual
+  }
+}
+
+
+
 function playNextAudio() {
-  const currentList = currentProductList(); // Obtener la lista actual (Favorites, cart, etc.)
-  const currentIndex = currentList.products.indexOf(currentProduct);
+  const currentList = currentProductList();
+  const currentIndex = currentList.order.indexOf(currentProduct.id);
   const nextIndex = (currentIndex + 1) % currentList.order.length;
   const nextProductId = currentList.order[nextIndex];
   changeCurrentProduct(nextProductId);
 }
 
 function playPreviousAudio() {
-  const currentList = currentProductList(); // Obtener la lista actual (Favorites, cart, etc.)
-  const currentIndex = currentList.products.indexOf(currentProduct);
+  const currentList = currentProductList();
+  const currentIndex = currentList.order.indexOf(currentProduct.id);
   const previousIndex = (currentIndex - 1 + currentList.order.length) % currentList.order.length;
   const previousProductId = currentList.order[previousIndex];
   changeCurrentProduct(previousProductId);
@@ -322,23 +338,6 @@ document.getElementById('forward').addEventListener('click', () => {
   console.log("next");
   playNextAudio();
 });
-
-function currentProductList() {
-  // Determinar la lista actual basándose en la variable currentProduct
-  if (favorites.products.includes(currentProduct)) {
-    return favorites;
-  } else if (cart.products.includes(currentProduct)) {
-    return cart;
-  } else {
-    return products; // O cualquier otra lógica que uses para determinar la lista actual
-  }
-}
-
-
-
-
-
-
 
 
 
