@@ -372,9 +372,9 @@ class ProductList {
   renderList() {
     if (this.products.length === 0) this.container.innerHTML = `<p class="productsError">Playlist vacía</p>`
     else this.container.innerHTML = this.products.map((p) => `
-     <div class="product" onClick="changeCurrentProduct(${p.id})">
+     <div class="product" onclick="changeCurrentProduct(${p.id})">
                 <div class="left-product">
-                  <img src=${p.image} alt="shoe" />
+                  <img src=${p.image} alt="song" />
                   <h4>${p.name}</h4>
                   
                 </div>
@@ -387,9 +387,9 @@ class ProductList {
     const results = this.products.filter(p => p.name.toLowerCase().includes(query.toLowerCase()))
     if (results.length === 0) this.container.innerHTML = `<p class="productsError">Playlist vacia</p>`
     else productsContainerList.innerHTML = results.map((p) => `
-     <div class="product" onClick="changeCurrentProduct(${p.id})">
+     <div class="product" onclick="changeCurrentProduct(${p.id})">
                 <div class="left-product">
-                  <img src=${p.image} alt="sh" />
+                  <img src=${p.image} alt="song" />
                   <h4>${p.name}</h4>
                 
                 </div>
@@ -478,16 +478,30 @@ const audio = new Audio();
 
 
 let isPlaying = false;
+function playNextAudio() {
+  const currentIndex = allProducts.indexOf(currentProduct);
+  const nextIndex = (currentIndex + 1) % allProducts.length;
+  changeCurrentProduct(allProducts[nextIndex].id);
+}
+
+
+function playPreviousAudio() {
+  const currentIndex = allProducts.indexOf(currentProduct);
+  const previousIndex = (currentIndex - 1 + allProducts.length) % allProducts.length;
+  changeCurrentProduct(allProducts[previousIndex].id);
+}
 
 function changeCurrentProduct(id) {
-  const product = allProducts.find(p => p.id === id);
+  const product = allProducts.find(p => p.id === id); 
+ 
 
   currentProduct = product;
   audio.src = product.urlSong; // Actualizar la URL del objeto Audio
   audio.pause(); // Pausar la reproducción actual
   audio.load(); // Recargar el audio con la nueva URL
   audio.play(); // Iniciar la reproducción del nuevo audio
-  audio.backward();
+ 
+ 
   isPlaying = false;
   productContainer.innerHTML = `
         <img class="product-img" src="${product.image}" alt="shoe" />
@@ -556,6 +570,8 @@ function onStart() {
 }
 onStart()
 
+
+
 const searchInput = document.getElementById('search')
 const searchIcon = document.getElementById('searchIcon')
 searchIcon.addEventListener('click', () => {
@@ -597,14 +613,24 @@ search.addEventListener('click', () => {
   currentAudio.src = input.value;
 });
 
-backward.addEventListener('click', () => {
-  currentAudio.src = input.value;
-});
 
 currentAudio.addEventListener('ended', () => {
   alert('Terminó el audio, pasando al siguiente');
   playNextAudio();
 });
+
+
+
+backward.addEventListener('click', () => {
+  playPreviousAudio();
+});
+
+forward.addEventListener('click', () => {
+  playNextAudio();
+});
+
+
+
 
 
 
