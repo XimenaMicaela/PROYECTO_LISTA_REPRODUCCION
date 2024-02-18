@@ -335,6 +335,18 @@ main {
     cursor: pointer;
   }
 
+  .maintitle{
+    margin-bottom: 200px;
+    outline: none;
+    padding: 20px 4rem;
+    font-size: 2rem;
+    border: none;
+    border-radius: var(--border-radius);
+    background-color: purple;
+    color: var(--primary-color);
+
+  }
+
   a {
     text-decoration: none;
     color: var(--primary-color);
@@ -344,21 +356,23 @@ main {
 
   button {
     outline: none;
-    padding: 12px 4rem 12px 4rem;
+    padding: 12px 4rem ;
     font-size: 2rem;
     border: none;
     border-radius: var(--border-radius);
     background-color: var(--light-background);
     color: var(--primary-color);
   }
+
 }
 
 .input-icon {
   position: relative;
 
   input {
+    margin-top: 50px;
     outline: none;
-    padding: 12px 4rem 12px 4rem;
+    padding: 12px 4rem ;
     font-size: 2rem;
     border: none;
     border-radius: var(--border-radius);
@@ -369,7 +383,7 @@ main {
     z-index: 1;
     color: var(--background-color);
     font-size: 2.4rem;
-    top: 50%;
+    top: 80%;
     transform: translateY(-50%);
     right: 1rem;
     cursor: pointer;
