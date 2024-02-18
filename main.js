@@ -422,7 +422,7 @@ class ProductList {
 
 const allProducts = [
   new Product({ name: "Break On Through", artista: "The Doors", duracion: "00:02:29", anio: "1967", genero: "Rock", image: "./IMG/THEDOORS.png", urlSong: "./CANCIONES/01 Break On Through (To The Other Side).mp3" }),
-  new Product({ name: "B.Y.O.B", artista: "System of a Down", duracion: "00:04:16", anio: "2005", genero: "Trash Metal", image: "./IMG/SYSTEMOFADOWN.png", urlSong: ".CANCIONES//02 B.Y.O.B..mp3" }),
+  new Product({ name: "B.Y.O.B", artista: "System of a Down", duracion: "00:04:16", anio: "2005", genero: "Trash Metal", image: "./IMG/SYSTEMOFADOWN.png", urlSong: "./CANCIONES//02 B.Y.O.B..mp3" }),
   new Product({ name: "Cementery Gates", artista: "Pantera", duracion: "00:07:02", anio: "2003", genero: "Metal", image: "./IMG/PANTERA.png", urlSong: "./CANCIONES/02 Cemetery Gates - Remastered Version.mp3" }),
   new Product({ name: "Reptilia", artista: "The Strokes", duracion: "00:03:29", anio: "2003", genero: "Alternative", image: "./IMG/THESTROKES.png", urlSong: "./CANCIONES/02 Reptilia.mp3" }),
   new Product({ name: "St.Anger", artista: "Metallica", duracion: "00:07:21", anio: "2003", genero: "Nu Metal", image: "./IMG/METALLICA.png", urlSong: "./CANCIONES/02 St. Anger.mp3" }),
@@ -480,8 +480,13 @@ function removeCurrentProductFromFavorite() {
 }
 
 function changeCurrentProduct(id) {
-  const product = allProducts.find(p => p.id === id)
-  currentProduct = product
+  const product = allProducts.find(p => p.id === id);
+
+  currentProduct = product;
+ /*  audio.src = product.urlSong; // Actualizar la URL del objeto Audio
+  audio.pause(); // Pausar la reproducción actual
+  audio.load(); // Recargar el audio con la nueva URL
+  audio.play(); // Iniciar la reproducción del nuevo audio */
   productContainer.innerHTML = `
         <img class="product-img" src="${product.image}" alt="shoe" />
         <h2 class="product-name">
@@ -584,9 +589,40 @@ searchInput.addEventListener('keypress', (event) => {
 
 /* REPRODUCIR AUDIO */
 
-const audio = new Audio("./CANCIONES/01 Break On Through (To The Other Side).mp3")
+const createAudio = (url) => {
+  const audio = new Audio(url);
+  audio.volume = 0.1;
+  return audio;
+};
 
-audio.currentTime = 245
+let currentAudioIndex = 0;
+let currentAudio = createAudio(allProducts[currentAudioIndex].urlSong);
+
+const playNextAudio = () => {
+  currentAudioIndex = (currentAudioIndex + 1) % allProducts.length;
+  currentAudio.src = allProducts[currentAudioIndex].urlSong;
+  currentAudio.play();
+};
+
+
+
+/* const newAudio = (url) => {
+  const audio = new Audio(url);
+  audio.volume = 0.1;
+  return audio;
+};
+
+// Crear nuevos objetos Audio para cada URL de urlSong en allProducts
+const audioObjects = allProducts.map(Product => newAudio(Product.urlSong));
+/* 
+const audio = new Audio(product.urlSong); */
+
+/* audio.volume = 0.1; */ 
+
+/* let currentTrackIndex = 0; */
+
+
+/* audio.currentTime = 245 */
 
 
 const play = document.getElementById('play')
@@ -594,7 +630,7 @@ const pause = document.getElementById('pause')
 const mute = document.getElementById('mute')
 const sound = document.getElementById('sound')
 
-play.addEventListener('click', () => {
+/* play.addEventListener('click', () => {
   audio.play()
 })
 
@@ -614,11 +650,56 @@ search.addEventListener('click', () => {
   audio.src = input.value
 })
 
+
 audio.addEventListener('ended', () => {
-  alert('termino el audio, paso al siguiente')
-  audio.src = "./CANCIONES/01 Break On Through (To The Other Side).mp3"
-  audio.play()
-})
+  alert('Terminó el audio, pasando a la siguiente canción');
+  currentTrackIndex = (currentTrackIndex + 1) % audioObjects.length;
+  audio.src = audioObjects[currentTrackIndex];
+  audio.play();
+}); */
+
+
+
+play.addEventListener('click', () => {
+  currentAudio.play();
+});
+
+pause.addEventListener('click', () => {
+  currentAudio.pause();
+});
+
+mute.addEventListener('click', () => {
+  currentAudio.volume = 0;
+});
+
+sound.addEventListener('click', () => {
+  currentAudio.volume = 0.1;
+});
+
+search.addEventListener('click', () => {
+  currentAudio.src = input.value;
+});
+
+currentAudio.addEventListener('ended', () => {
+  alert('Terminó el audio, pasando al siguiente');
+  audio.src = ".CANCIONES//02 B.Y.O.B..mp3"
+  playNextAudio();
+});
+
+
+/* 
+function changeCurrentProduct(id) {
+  const product = allProducts.find(p => p.id === id);
+  currentProduct = product;
+  audio.src = product.urlSong; // Actualizar la URL del objeto Audio
+  audio.pause(); // Pausar la reproducción actual
+  audio.load(); // Recargar el audio con la nueva URL
+  audio.play(); // Iniciar la reproducción del nuevo audio
+   */
+
+
+
+
 
 
 
