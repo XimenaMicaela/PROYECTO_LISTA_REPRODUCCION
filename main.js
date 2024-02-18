@@ -53,7 +53,11 @@ class ProductList {
   }
 
   searchProduct(query) {
-    const results = this.products.filter(p => p.name.toLowerCase().includes(query.toLowerCase()) || p.artista.toLowerCase().includes(query.toLowerCase()));
+    const results = this.products.filter(p => 
+      p.name.toLowerCase().includes(query.toLowerCase()) || 
+      p.artista.toLowerCase().includes(query.toLowerCase()) || 
+      p.genero.toLowerCase().includes(query.toLowerCase())
+    );
     if (results.length === 0) {
       this.container.innerHTML = `<p class="productsError">Playlist vacía</p>`;
     } else {
@@ -63,9 +67,10 @@ class ProductList {
             <img src=${p.image} alt="song" />
             <h4>${p.name}</h4>
             <p>Artista: ${p.artista}</p>
+            <p>Género: ${p.genero}</p>
           </div>
         </div>
-      `).join(''); // Use join() to convert the array of HTML strings into a single string
+      `).join('');
     }
   }
   
