@@ -208,22 +208,7 @@ function changeCurrentProduct(id) {
 }
 changeCurrentProduct(0)
 
-function playNextAudio() {
-  
-  console.log("Playing previous audio");
-  const currentIndex = allProducts.indexOf(currentProduct);
-  const nextIndex = (currentIndex + 1) % allProducts.length;
-  changeCurrentProduct(allProducts[nextIndex].id);
-}
 
-
-function playPreviousAudio() {
-  
-  console.log("Playing previous audio");
-  const currentIndex = allProducts.indexOf(currentProduct);
-  const previousIndex = (currentIndex - 1 + allProducts.length) % allProducts.length;
-  changeCurrentProduct(allProducts[previousIndex].id);
-}
 
 
 
@@ -258,6 +243,23 @@ searchInput.addEventListener('keypress', (event) => {
 })
 
 /* REPRODUCIR AUDIO */
+
+function playNextAudio() {
+  
+  console.log("Playing previous audio");
+  const currentIndex = allProducts.indexOf(currentProduct);
+  const nextIndex = (currentIndex + 1) % allProducts.length;
+  changeCurrentProduct(allProducts[nextIndex].id);
+}
+
+
+function playPreviousAudio() {
+  
+  console.log("Playing previous audio");
+  const currentIndex = allProducts.indexOf(currentProduct);
+  const previousIndex = (currentIndex - 1 + allProducts.length) % allProducts.length;
+  changeCurrentProduct(allProducts[previousIndex].id);
+}
 
 play.addEventListener('click', () => {
   console.log("Play");
