@@ -65,7 +65,7 @@ header {
         font-size: 5rem;
       }
 
-      .boton-backward {
+   /*    .boton-backward {
         background-color: var(--primary-color);
         color: var(--background-color);
         font-size: 2.4rem;
@@ -111,7 +111,7 @@ header {
         &:hover {
           background-color: var(--secondary-color);
         }
-      }
+      } */
 
 
 
@@ -199,85 +199,7 @@ main {
       font-size: 2.5rem;
     }
 
-    .boton-play {
-      background-color: var(--primary-color);
-      color: var(--background-color);
-      font-size: 2.4rem;
-      padding: 12px 24px;
-      border-radius: var(--border-radius);
-      border: none;
-      transition: var(--transition);
-      cursor: pointer;
-      font-weight: 500;
-
-      &:hover {
-        background-color: var(--secondary-color);
-      }
-    }
-
-    .boton-pause {
-      background-color: var(--primary-color);
-      color: var(--background-color);
-      font-size: 2.4rem;
-      padding: 12px 24px;
-      border-radius: var(--border-radius);
-      border: none;
-      transition: var(--transition);
-      cursor: pointer;
-      font-weight: 500;
-
-      &:hover {
-        background-color: var(--secondary-color);
-      }
-    }
-
-    .boton-backward {
-      background-color: var(--primary-color);
-      color: var(--background-color);
-      font-size: 2.4rem;
-      padding: 12px 24px;
-      border-radius: var(--border-radius);
-      border: none;
-      transition: var(--transition);
-      cursor: pointer;
-      font-weight: 500;
-
-      &:hover {
-        background-color: var(--secondary-color);
-      }
-    }
-
-    .boton-forward {
-      background-color: var(--primary-color);
-      color: var(--background-color);
-      font-size: 2.4rem;
-      padding: 12px 24px;
-      border-radius: var(--border-radius);
-      border: none;
-      transition: var(--transition);
-      cursor: pointer;
-      font-weight: 500;
-
-      &:hover {
-        background-color: var(--secondary-color);
-      }
-    }
-
-    .boton-mute {
-      background-color: var(--primary-color);
-      color: var(--background-color);
-      font-size: 2.4rem;
-      padding: 12px 24px;
-      border-radius: var(--border-radius);
-      border: none;
-      transition: var(--transition);
-      cursor: pointer;
-      font-weight: 500;
-
-      &:hover {
-        background-color: var(--secondary-color);
-      }
-    }
+   
 
     .add-to-cart-btn {
       background-color: var(--primary-color);
@@ -306,11 +228,7 @@ main {
       align-items: center;
       gap: var(--gap-s);
 
-      .tachado {
-        text-decoration: line-through;
-        color: var(--secondary-color);
-        font-size: 2.4rem;
-      }
+      
     }
 
     .product-img {
@@ -322,6 +240,86 @@ main {
 
 
 
+}
+
+.boton-play {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  font-size: 2.4rem;
+  padding: 12px 24px;
+  border-radius: var(--border-radius);
+  border: none;
+  transition: var(--transition);
+  cursor: pointer;
+  font-weight: 500;
+
+  &:hover {
+    background-color: var(--secondary-color);
+  }
+}
+
+.boton-pause {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  font-size: 2.4rem;
+  padding: 12px 24px;
+  border-radius: var(--border-radius);
+  border: none;
+  transition: var(--transition);
+  cursor: pointer;
+  font-weight: 500;
+
+  &:hover {
+    background-color: var(--secondary-color);
+  }
+}
+
+.boton-backward {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  font-size: 2.4rem;
+  padding: 12px 24px;
+  border-radius: var(--border-radius);
+  border: none;
+  transition: var(--transition);
+  cursor: pointer;
+  font-weight: 500;
+
+  &:hover {
+    background-color: var(--secondary-color);
+  }
+}
+
+.boton-forward {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  font-size: 2.4rem;
+  padding: 12px 24px;
+  border-radius: var(--border-radius);
+  border: none;
+  transition: var(--transition);
+  cursor: pointer;
+  font-weight: 500;
+
+  &:hover {
+    background-color: var(--secondary-color);
+  }
+}
+
+.boton-mute {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  font-size: 2.4rem;
+  padding: 12px 24px;
+  border-radius: var(--border-radius);
+  border: none;
+  transition: var(--transition);
+  cursor: pointer;
+  font-weight: 500;
+
+  &:hover {
+    background-color: var(--secondary-color);
+  }
 }
 
 
