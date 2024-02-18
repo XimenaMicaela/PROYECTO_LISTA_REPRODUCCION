@@ -269,17 +269,35 @@ function currentProductList() {
 function playNextAudio() {
   const currentList = currentProductList();
   const currentIndex = currentList.order.indexOf(currentProduct.id);
-  const nextIndex = (currentIndex + 1) % currentList.order.length;
-  const nextProductId = currentList.order[nextIndex];
-  changeCurrentProduct(nextProductId);
+
+  if (currentIndex !== -1) {
+    const nextIndex = (currentIndex + 1) % currentList.order.length;
+    const nextProductId = currentList.order[nextIndex];
+    changeCurrentProduct(nextProductId);
+  } else {
+    // Si no hay historial de reproducción, simplemente pasa al siguiente en la lista
+    const currentIndexAll = products.products.indexOf(currentProduct);
+    const nextIndexAll = (currentIndexAll + 1) % products.products.length;
+    const nextProductAll = products.products[nextIndexAll];
+    changeCurrentProduct(nextProductAll.id);
+  }
 }
 
 function playPreviousAudio() {
   const currentList = currentProductList();
   const currentIndex = currentList.order.indexOf(currentProduct.id);
-  const previousIndex = (currentIndex - 1 + currentList.order.length) % currentList.order.length;
-  const previousProductId = currentList.order[previousIndex];
-  changeCurrentProduct(previousProductId);
+
+  if (currentIndex !== -1) {
+    const previousIndex = (currentIndex - 1 + currentList.order.length) % currentList.order.length;
+    const previousProductId = currentList.order[previousIndex];
+    changeCurrentProduct(previousProductId);
+  } else {
+    // Si no hay historial de reproducción, simplemente pasa al anterior en la lista
+    const currentIndexAll = products.products.indexOf(currentProduct);
+    const previousIndexAll = (currentIndexAll - 1 + products.products.length) % products.products.length;
+    const previousProductAll = products.products[previousIndexAll];
+    changeCurrentProduct(previousProductAll.id);
+  }
 }
 
 play.addEventListener('click', () => {
