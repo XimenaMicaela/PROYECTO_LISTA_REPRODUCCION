@@ -31,9 +31,10 @@ class Product {
 
 class ProductList {
   constructor({ name, products = [], container }) {
-    this.name = name
-    this.products = products
-    this.container = container
+    this.name = name;
+    this.products = products;
+    this.container = container;
+    this.order=[];
   }
 
   renderList() {
@@ -75,19 +76,26 @@ class ProductList {
   
 
   addProduct(product) {
-    if (this.name === 'Favorites') product.isFavorite = true
-    if (this.name === 'cart') product.inCart = true
-    this.products.push(product)
-    this.renderList()
+    if (this.name === 'Favorites') {
+      product.isFavorite = true;
+      this.order.push(product.id); // Agregar el ID del producto al historial de reproducción
+    }
+    if (this.name === 'cart') product.inCart = true;
+    this.products.push(product);
+    this.renderList();
   }
 
   removeProduct(product) {
-    if (this.name === 'Favorites') product.isFavorite = false
-    if (this.name === 'cart') product.inCart = false
-    const index = this.products.indexOf(product)
-    if (index === -1) return
-    this.products.splice(index, 1)
-    this.renderList()
+    if (this.name === 'Favorites') {
+      product.isFavorite = false;
+      const index = this.order.indexOf(product.id);
+      if (index !== -1) this.order.splice(index, 1); // Eliminar el ID del producto del historial de reproducción
+    }
+    if (this.name === 'cart') product.inCart = false;
+    const index = this.products.indexOf(product);
+    if (index === -1) return;
+    this.products.splice(index, 1);
+    this.renderList();
   }
 }
 
@@ -243,21 +251,22 @@ searchInput.addEventListener('keypress', (event) => {
 /* REPRODUCIR AUDIO */
 
 function playNextAudio() {
-  
-  console.log("Playing previous audio");
   const currentIndex = allProducts.indexOf(currentProduct);
-  const nextIndex = (currentIndex + 1) % allProducts.length;
-  changeCurrentProduct(allProducts[nextIndex].id);
+  const currentList = currentProductList(); // Obtener la lista actual (Favorites, cart, etc.)
+  const nextIndex = (currentIndex + 1) % currentList.order.length;
+  const nextProductId = currentList.order[nextIndex];
+  changeCurrentProduct(nextProductId);
 }
-
 
 function playPreviousAudio() {
-  
-  console.log("Playing previous audio");
   const currentIndex = allProducts.indexOf(currentProduct);
-  const previousIndex = (currentIndex - 1 + allProducts.length) % allProducts.length;
-  changeCurrentProduct(allProducts[previousIndex].id);
+  const currentList = currentProductList(); // Obtener la lista actual (Favorites, cart, etc.)
+  const previousIndex = (currentIndex - 1 + currentList.order.length) % currentList.order.length;
+  const previousProductId = currentList.order[previousIndex];
+  changeCurrentProduct(previousProductId);
 }
+
+
 
 play.addEventListener('click', () => {
   console.log("Play");
@@ -305,7 +314,6 @@ search.addEventListener('click', () => {
 });
  */
 
-
 document.getElementById('backward').addEventListener('click', () => {
   console.log("Prev");
   
@@ -316,6 +324,17 @@ document.getElementById('forward').addEventListener('click', () => {
   console.log("next");
   playNextAudio();
 });
+
+function currentProductList() {
+  // Determinar la lista actual basándose en la variable currentProduct
+  if (favorites.products.includes(currentProduct)) {
+    return favorites;
+  } else if (cart.products.includes(currentProduct)) {
+    return cart;
+  } else {
+    return products; // O cualquier otra lógica que uses para determinar la lista actual
+  }
+}
 
 
 
