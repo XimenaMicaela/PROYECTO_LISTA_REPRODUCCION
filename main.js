@@ -217,7 +217,9 @@ function changeCurrentProduct(id) {
           <i class="bi bi-plus"></i> 
         </button>`}
 
+
 `
+
 }
 changeCurrentProduct(0)
 
