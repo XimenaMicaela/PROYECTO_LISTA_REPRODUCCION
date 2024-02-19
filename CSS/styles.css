@@ -239,52 +239,47 @@ main {
       box-shadow: 0 0 200px 3px #ffffff1a;
     }
   }
-   .botones-reproduccion {
-              display: flex;
-              justify-content: flex-end; /* Alinea los botones a la derecha */
-              align-items: flex-end; /* Alinea los botones en la parte inferior */
-              gap: var(--gap-s);
-              margin-top: auto; /* Empuja los botones hacia abajo */
-          }
-          .reproduccion-boton button {
-            background-color: var(--primary-color);
-            color: var(--background-color);
-            font-size: 2.4rem;
-            padding: 12px 24px;
-            border-radius: var(--border-radius);
-            border: none;
-            transition: var(--transition);
-            cursor: pointer;
-            font-weight: 500;
-        
-            &:hover {
-                background-color: var(--secondary-color);
-            }
-        }
+  .botones-reproduccion {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: var(--gap-s);
+    margin-top: auto;
+}
 
-}
-.botones-reproduccion {
-  display: flex;
-  justify-content: flex-end; /* Alinea los botones a la derecha */
-  align-items: flex-end; /* Alinea los botones en la parte inferior */
-  gap: var(--gap-s);
-  margin-top: auto; /* Empuja los botones hacia abajo */
-}
 .reproduccion-boton button {
-background-color: var(--primary-color);
-color: var(--background-color);
-font-size: 2.4rem;
-padding: 12px 24px;
-border-radius: var(--border-radius);
-border: none;
-transition: var(--transition);
-cursor: pointer;
-font-weight: 500;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    font-size: 2.4rem;
+    padding: 12px 24px;
+    border-radius: var(--border-radius);
+    border: none;
+    transition: var(--transition);
+    cursor: pointer;
+    font-weight: 500;
 
-&:hover {
-    background-color: var(--secondary-color);
+    &:hover {
+        background-color: var(--secondary-color);
+    }
 }
-}  
+
+
+.reproduccion-boton button {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  font-size: 2.4rem;
+  padding: 12px 24px;
+  border-radius: var(--border-radius);
+  border: none;
+  transition: var(--transition);
+  cursor: pointer;
+  font-weight: 500;
+
+  &:hover {
+      background-color: var(--secondary-color);
+  }
+}
 
 .boton-play {
   background-color: var(--primary-color);
